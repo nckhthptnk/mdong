@@ -561,23 +561,23 @@
             <h2>Quiz - Kiểm tra kiến thức</h2>
             
             <div class="mode-selector">
-                <label for="quizMode"><strong>Chọn chế độ quiz:</strong></label>
+                <label for="quizMode"><strong>Choose quiz mode:</strong></label>
                 <select id="quizMode" onchange="changeQuizMode()">
-                    <option value="vocabulary">Từ vựng</option>
-                    <option value="grammar">Ngữ pháp</option>
-                    <option value="reading">Đọc hiểu</option>
-                    <option value="mixed">Tổng hợp</option>
+                    <option value="vocabulary">Vocabulary</option>
+                    <option value="grammar">Grammar</option>
+                    <option value="reading">Reading</option>
+                    <option value="mixed">Mixed</option>
                 </select>
             </div>
 
             <div class="quiz-container">
-                <div class="quiz-question" id="quizQuestion">Chọn chế độ quiz để bắt đầu</div>
+                <div class="quiz-question" id="quizQuestion">Choose a quiz mode to start</div>
                 <div class="quiz-options" id="quizOptions"></div>
                 <div class="quiz-controls">
                     <div class="quiz-score">
-                        Điểm: <span id="quizScore">0</span>/<span id="totalQuestions">0</span>
+                        Score: <span id="quizScore">0</span>/<span id="totalQuestions">0</span>
                     </div>
-                    <button class="control-btn" onclick="nextQuestion()">Câu tiếp theo</button>
+                    <button class="control-btn" onclick="nextQuestion()">Next Question</button>
                 </div>
             </div>
         </section>
@@ -728,52 +728,52 @@
         // Reading comprehension questions
         const readingQuestions = [
             {
-                question: "Theo đoạn văn, tại sao lối sống lành mạnh ngày càng trở nên quan trọng?",
+                question: "According to the passage, why has living a healthy lifestyle become increasingly important?",
                 options: [
-                    "Vì cuộc sống ngày càng bận rộn và tỷ lệ bệnh tật tăng cao",
-                    "Vì thực phẩm hữu cơ ngày càng đắt đỏ",
-                    "Vì mọi người có nhiều thời gian rảnh hơn",
-                    "Vì công nghệ phát triển"
+                    "Because of fast-paced life and rising rates of chronic diseases",
+                    "Because organic foods are becoming more expensive",
+                    "Because people have more free time",
+                    "Because of technological development"
                 ],
                 correct: 0
             },
             {
-                question: "Chế độ ăn cân bằng nên bao gồm những gì?",
+                question: "What should a balanced diet include?",
                 options: [
-                    "Chỉ trái cây và rau quả",
-                    "Trái cây, rau quả, ngũ cốc nguyên hạt và protein nạc",
-                    "Chỉ thực phẩm hữu cơ",
-                    "Chỉ thực phẩm bổ sung"
+                    "Only fruits and vegetables",
+                    "Fruits, vegetables, whole grains, and lean proteins",
+                    "Only organic foods",
+                    "Only nutritional supplements"
                 ],
                 correct: 1
             },
             {
-                question: "Tập thể dục tim mạch bao gồm những hoạt động nào?",
+                question: "What cardiovascular activities are mentioned in the passage?",
                 options: [
-                    "Chỉ có yoga",
-                    "Chỉ có tập tạ",
-                    "Chạy bộ, bơi lội hoặc đạp xe",
-                    "Chỉ có thiền định"
+                    "Only yoga",
+                    "Only weight training",
+                    "Running, swimming, or cycling",
+                    "Only meditation"
                 ],
                 correct: 2
             },
             {
-                question: "Theo đoạn văn, cần ngủ bao nhiêu tiếng mỗi đêm?",
+                question: "According to the passage, how many hours of sleep are needed per night?",
                 options: [
-                    "5-6 tiếng",
-                    "7-9 tiếng",
-                    "10-12 tiếng",
-                    "Không quan trọng"
+                    "5-6 hours",
+                    "7-9 hours",
+                    "10-12 hours",
+                    "It doesn't matter"
                 ],
                 correct: 1
             },
             {
-                question: "Lợi ích của lối sống lành mạnh bao gồm:",
+                question: "Benefits of a healthy lifestyle include:",
                 options: [
-                    "Chỉ có ngoại hình đẹp",
-                    "Chỉ có sức khỏe tốt",
-                    "Năng lượng cao, tâm trạng tốt, chức năng nhận thức cải thiện",
-                    "Chỉ có giảm cân"
+                    "Only physical appearance",
+                    "Only good health",
+                    "Higher energy levels, better mood, improved cognitive function",
+                    "Only weight loss"
                 ],
                 correct: 2
             }
@@ -783,34 +783,34 @@
         const quizData = {
             vocabulary: [
                 {
-                    question: "Từ nào có nghĩa là 'dinh dưỡng'?",
-                    options: ["Exercise", "Nutrition", "Wellness", "Metabolism"],
+                    question: "What does 'nutrition' mean?",
+                    options: ["Exercise", "The process of providing food", "Wellness", "Metabolism"],
                     correct: 1
                 },
                 {
-                    question: "Phát âm của từ 'cardiovascular' là gì?",
-                    options: ["/ˌkɑːdioʊˈvæskjələr/", "/ˈkɑːdioʊ/", "/væskjələr/", "/ˌkɑːdio/"],
-                    correct: 0
-                },
-                {
-                    question: "'Antioxidant' có nghĩa là gì?",
-                    options: ["Vitamin", "Chất chống oxy hóa", "Protein", "Calo"],
+                    question: "Which word means 'substances that prevent damage from free radicals'?",
+                    options: ["Vitamins", "Antioxidants", "Proteins", "Calories"],
                     correct: 1
                 },
                 {
-                    question: "Từ nào mô tả 'sự linh hoạt'?",
-                    options: ["Stamina", "Vitality", "Flexibility", "Immunity"],
+                    question: "What does 'flexibility' refer to?",
+                    options: ["Stamina", "Vitality", "The ability to bend easily", "Immunity"],
                     correct: 2
                 },
                 {
-                    question: "'Mindfulness' được phát âm như thế nào?",
-                    options: ["/ˈmaɪnd/", "/ˈmaɪndfəlnəs/", "/fəlnəs/", "/ˈmaɪndfl/"],
+                    question: "Complete the sentence: 'Regular exercise can boost your ____.'",
+                    options: ["metabolism", "flexibility", "mindfulness", "organic"],
+                    correct: 0
+                },
+                {
+                    question: "What is 'mindfulness'?",
+                    options: ["Physical exercise", "The practice of being aware and present", "A type of diet", "Cardiovascular health"],
                     correct: 1
                 }
             ],
             grammar: [
                 {
-                    question: "Chọn câu đúng sử dụng Present Participle:",
+                    question: "Choose the correct sentence using Present Participle:",
                     options: [
                         "The man runs in the park is my neighbor.",
                         "The man running in the park is my neighbor.",
@@ -820,7 +820,7 @@
                     correct: 1
                 },
                 {
-                    question: "Perfect Gerund được tạo thành như thế nào?",
+                    question: "How is a Perfect Gerund formed?",
                     options: [
                         "V-ing + V3",
                         "Having + V-ing",
@@ -830,7 +830,7 @@
                     correct: 2
                 },
                 {
-                    question: "Chọn câu đúng với To-infinitive clause:",
+                    question: "Choose the correct sentence with To-infinitive clause:",
                     options: [
                         "She exercises regularly for stay healthy.",
                         "She exercises regularly to stay healthy.",
@@ -840,7 +840,7 @@
                     correct: 1
                 },
                 {
-                    question: "Câu nào sử dụng Perfect Participle đúng?",
+                    question: "Which sentence uses Perfect Participle correctly?",
                     options: [
                         "Finishing his workout, he took a shower.",
                         "Having finished his workout, he took a shower.",
@@ -850,40 +850,40 @@
                     correct: 1
                 },
                 {
-                    question: "Past Participle được sử dụng để:",
+                    question: "Past Participle is used to:",
                     options: [
-                        "Chỉ thời gian tương lai",
-                        "Rút gọn mệnh đề quan hệ ở dạng bị động",
-                        "Chỉ hành động đang xảy ra",
-                        "Chỉ mục đích"
+                        "Show future time",
+                        "Reduce relative clauses in passive voice",
+                        "Show ongoing actions",
+                        "Show purpose only"
                     ],
                     correct: 1
                 }
             ],
             reading: [
                 {
-                    question: "Theo đoạn văn, yếu tố nào đóng vai trò cơ bản trong việc duy trì sức khỏe?",
-                    options: ["Tập thể dục", "Dinh dưỡng", "Ngủ đủ giấc", "Uống nước"],
+                    question: "According to the passage, what plays a fundamental role in maintaining good health?",
+                    options: ["Exercise", "Nutrition", "Adequate sleep", "Drinking water"],
                     correct: 1
                 },
                 {
-                    question: "Hoạt động nào được đề cập như là tập thể dục tim mạch?",
-                    options: ["Yoga", "Tập tạ", "Bơi lội", "Thiền định"],
+                    question: "Which activity is mentioned as cardiovascular exercise?",
+                    options: ["Yoga", "Weight training", "Swimming", "Meditation"],
                     correct: 2
                 },
                 {
-                    question: "Thực phẩm giàu chất gì giúp bảo vệ chống lại bệnh tật?",
-                    options: ["Protein", "Calo", "Chất xơ và chất chống oxy hóa", "Nước"],
+                    question: "Foods high in what help protect against disease?",
+                    options: ["Protein", "Calories", "Fiber and antioxidants", "Water"],
                     correct: 2
                 },
                 {
-                    question: "Theo đoạn văn, cần ngủ bao nhiêu tiếng mỗi đêm?",
-                    options: ["5-6 tiếng", "7-9 tiếng", "10-11 tiếng", "12 tiếng"],
+                    question: "According to the passage, how many hours of sleep are needed per night?",
+                    options: ["5-6 hours", "7-9 hours", "10-11 hours", "12 hours"],
                     correct: 1
                 },
                 {
-                    question: "Lợi ích của lối sống lành mạnh bao gồm tất cả NGOẠI TRỪ:",
-                    options: ["Năng lượng cao hơn", "Tâm trạng tốt hơn", "Chức năng nhận thức cải thiện", "Thu nhập cao hơn"],
+                    question: "Benefits of a healthy lifestyle include all EXCEPT:",
+                    options: ["Higher energy levels", "Better mood", "Improved cognitive function", "Higher income"],
                     correct: 3
                 }
             ],
@@ -961,13 +961,13 @@
             document.getElementById('readingText').innerHTML = readingText;
             
             const questionsContainer = document.getElementById('readingQuestions');
-            questionsContainer.innerHTML = '<h3>Câu hỏi đọc hiểu:</h3>';
+            questionsContainer.innerHTML = '<h3>Reading Comprehension Questions:</h3>';
             
             readingQuestions.forEach((q, index) => {
                 const questionDiv = document.createElement('div');
                 questionDiv.className = 'question-item';
                 questionDiv.innerHTML = `
-                    <div style="font-weight: bold; margin-bottom: 10px;">Câu ${index + 1}: ${q.question}</div>
+                    <div style="font-weight: bold; margin-bottom: 10px;">Question ${index + 1}: ${q.question}</div>
                     <div class="quiz-options">
                         ${q.options.map((option, i) => `
                             <div class="quiz-option" onclick="selectReadingAnswer(${index}, ${i})">
@@ -1076,7 +1076,7 @@
             if (questions.length === 0) return;
             
             const currentQuestion = questions[currentQuestionIndex];
-            document.getElementById('quizQuestion').textContent = `Câu ${currentQuestionIndex + 1}: ${currentQuestion.question}`;
+            document.getElementById('quizQuestion').textContent = `Question ${currentQuestionIndex + 1}: ${currentQuestion.question}`;
             
             const optionsContainer = document.getElementById('quizOptions');
             optionsContainer.innerHTML = '';
@@ -1126,7 +1126,7 @@
                 updateQuizDisplay();
             } else {
                 // Quiz completed
-                alert(`Quiz hoàn thành! Điểm của bạn: ${quizScore}/${questions.length}`);
+                alert(`Quiz completed! Your score: ${quizScore}/${questions.length}`);
                 currentQuestionIndex = 0;
                 quizScore = 0;
                 updateQuizDisplay();
@@ -1186,5 +1186,5 @@
         // Initialize the app when page loads
         window.onload = init;
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99649794f639f8f0',t:'MTc2MTc2MTAzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99649f4556def8f0',t:'MTc2MTc2MTM0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
