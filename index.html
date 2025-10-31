@@ -1,1190 +1,2026 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 7: Healthy Lifestyle - English Learning</title>
-    <style>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 7: Healthy Lifestyle</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
         body {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-            min-height: 100%;
         }
-
+        
         html {
             height: 100%;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            color: #2d3436;
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
-            margin: 0;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800;
-        }
-
-        .header p {
-            color: #636e72;
-            font-size: 1.2rem;
-            margin-top: 10px;
-        }
-
-        .home-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-            color: white;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            font-size: 1rem;
-        }
-
-        .home-btn:hover {
-            background: linear-gradient(45deg, #ff5252, #ff7979);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.5);
-        }
-
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
-            font-size: 1rem;
-        }
-
-        .nav-btn:hover, .nav-btn.active {
-            background: linear-gradient(45deg, #45b7aa, #3d9970);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(78, 205, 196, 0.4);
-        }
-
-        .section {
-            display: none;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        .vocab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .vocab-card {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-
-        .vocab-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-
-        .vocab-word {
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #2d3436;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pronunciation-btn {
-            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
-            border: none;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(253, 121, 168, 0.3);
-        }
-
-        .pronunciation-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(253, 121, 168, 0.4);
-        }
-
-        .vocab-pronunciation {
-            color: #636e72;
-            font-style: italic;
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .vocab-meaning {
-            color: #2d3436;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .vocab-example {
-            background: rgba(255,255,255,0.8);
-            padding: 15px;
-            border-radius: 12px;
-            font-style: italic;
-            color: #636e72;
-            border-left: 4px solid #fd79a8;
-        }
-
-        .reading-text {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
-        .highlight-word {
-            background: #ffeb3b;
-            padding: 2px 4px;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .highlight-word:hover {
-            background: #ffc107;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .flashcard-container {
-            display: flex;
-            justify-content: center;
-            margin: 30px 0;
-        }
-
+        
         .flashcard {
-            width: 350px;
-            height: 250px;
             perspective: 1000px;
             cursor: pointer;
         }
-
+        
         .flashcard-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            text-align: center;
             transition: transform 0.6s;
             transform-style: preserve-3d;
         }
-
+        
         .flashcard.flipped .flashcard-inner {
             transform: rotateY(180deg);
         }
-
+        
         .flashcard-front, .flashcard-back {
             position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-            border-radius: 15px;
+            border-radius: 12px;
+            padding: 2rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .flashcard-front {
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-            color: white;
-        }
-
-        .flashcard-back {
-            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
-            color: white;
-            transform: rotateY(180deg);
-            padding: 20px;
             flex-direction: column;
-        }
-
-        .flashcard-controls {
-            display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .control-btn {
-            background: linear-gradient(45deg, #00b894, #00cec9);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.3);
-            font-size: 1rem;
-        }
-
-        .control-btn:hover {
-            background: linear-gradient(45deg, #00a085, #00b7b8);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 184, 148, 0.4);
-        }
-
-        .quiz-container {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            margin-top: 20px;
-        }
-
-        .quiz-question {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .quiz-options {
-            display: grid;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .quiz-option {
-            background: white;
-            border: 2px solid #e0e0e0;
-            padding: 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .quiz-option:hover {
-            border-color: #4ecdc4;
-            background: #f0fffe;
-        }
-
-        .quiz-option.selected {
-            border-color: #4ecdc4;
-            background: #e0f7f7;
-        }
-
-        .quiz-option.correct {
-            border-color: #4caf50;
-            background: #e8f5e8;
-        }
-
-        .quiz-option.incorrect {
-            border-color: #f44336;
-            background: #ffebee;
-        }
-
-        .quiz-controls {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
         }
-
-        .quiz-score {
-            font-weight: bold;
-            color: #333;
+        
+        .flashcard-back {
+            transform: rotateY(180deg);
         }
-
-        .grammar-section {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
+        
+        .highlight {
+            background-color: #fef08a;
+            padding: 2px 4px;
+            border-radius: 3px;
         }
-
-        .grammar-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .grammar-content {
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .example-box {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid #4ecdc4;
-        }
-
-        .mode-selector {
-            margin-bottom: 20px;
-        }
-
-        .mode-selector select {
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 2px solid #e0e0e0;
-            font-size: 1rem;
-            background: white;
-            cursor: pointer;
-        }
-
-        .reading-questions {
-            background: #f0f8ff;
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 20px;
-        }
-
-        .question-item {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                flex-direction: column;
-                align-items: center;
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            .vocab-grid {
-                grid-template-columns: 1fr;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            
-            .flashcard {
-                width: 300px;
-                height: 200px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.5s ease;
         }
     </style>
-</head>
-<body>
-    <a href="https://nckhthptnk.github.io/tienganh11/" class="home-btn">🏠 Trang chủ</a>
-    
-    <div class="container">
-        <header class="header">
-            <h1>Unit 7: Healthy Lifestyle</h1>
-            <p>Lối sống lành mạnh - Học từ vựng, ngữ pháp và kỹ năng đọc hiểu</p>
-        </header>
-
-        <nav class="nav-menu">
-            <button class="nav-btn active" onclick="showSection('vocabulary')">Từ vựng</button>
-            <button class="nav-btn" onclick="showSection('reading')">Đọc hiểu</button>
-            <button class="nav-btn" onclick="showSection('flashcard')">Flashcard</button>
-            <button class="nav-btn" onclick="showSection('grammar')">Ngữ pháp</button>
-            <button class="nav-btn" onclick="showSection('quiz')">Quiz</button>
-        </nav>
-
-        <!-- Vocabulary Section -->
-        <section id="vocabulary" class="section active">
-            <h2>Từ vựng - Healthy Lifestyle</h2>
-            <div class="vocab-grid" id="vocabGrid"></div>
-        </section>
-
-        <!-- Reading Section -->
-        <section id="reading" class="section">
-            <h2>Đọc hiểu - Living a Healthy Life</h2>
-            <div class="reading-text" id="readingText"></div>
-            <div class="reading-questions" id="readingQuestions"></div>
-        </section>
-
-        <!-- Flashcard Section -->
-        <section id="flashcard" class="section">
-            <h2>Flashcard - Ôn tập từ vựng</h2>
-            <div class="flashcard-container">
-                <div class="flashcard" id="flashcard" onclick="flipCard()">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front" id="cardFront">
-                            <div>Nhấn để bắt đầu</div>
-                        </div>
-                        <div class="flashcard-back" id="cardBack">
-                            <div>Sẵn sàng học!</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flashcard-controls">
-                <button class="control-btn" onclick="previousCard()">⬅ Trước</button>
-                <button class="control-btn" onclick="shuffleCards()">🔀 Xáo trộn</button>
-                <button class="control-btn" onclick="nextCard()">Sau ➡</button>
-            </div>
-            <div style="text-align: center; margin-top: 15px;">
-                <span id="cardCounter">Thẻ 1 / 20</span>
-            </div>
-        </section>
-
-        <!-- Grammar Section -->
-        <section id="grammar" class="section">
-            <h2>Ngữ pháp</h2>
-            
-            <div class="grammar-section">
-                <div class="grammar-title">1. Participle Phrases / To-infinitive Clauses</div>
-                <div class="grammar-content">
-                    <p><strong>Participle Phrases</strong> được sử dụng để rút gọn mệnh đề quan hệ hoặc mệnh đề trạng ngữ:</p>
-                    <div class="example-box">
-                        <strong>Present Participle (-ing):</strong><br>
-                        • The man <em>running</em> in the park is my neighbor.<br>
-                        • <em>Eating</em> healthy food, she maintains her weight.
-                    </div>
-                    <div class="example-box">
-                        <strong>Past Participle (-ed/V3):</strong><br>
-                        • The book <em>written</em> by this author is very popular.<br>
-                        • <em>Tired</em> from work, he went to bed early.
-                    </div>
-                    
-                    <p><strong>To-infinitive Clauses</strong> diễn tả mục đích, kết quả hoặc rút gọn mệnh đề quan hệ:</p>
-                    <div class="example-box">
-                        • She exercises regularly <em>to stay</em> healthy.<br>
-                        • He was the first person <em>to arrive</em> at the gym.<br>
-                        • The best way <em>to lose</em> weight is through diet and exercise.
-                    </div>
-                </div>
-            </div>
-
-            <div class="grammar-section">
-                <div class="grammar-title">2. Perfect Gerunds / Perfect Participles</div>
-                <div class="grammar-content">
-                    <p><strong>Perfect Gerunds (Having + V3)</strong> diễn tả hành động đã hoàn thành trước hành động khác:</p>
-                    <div class="example-box">
-                        • <em>Having exercised</em> for an hour, she felt energized.<br>
-                        • I regret <em>having eaten</em> too much junk food.<br>
-                        • <em>Having lived</em> a healthy lifestyle, he looks younger than his age.
-                    </div>
-                    
-                    <p><strong>Perfect Participles</strong> có thể ở dạng chủ động hoặc bị động:</p>
-                    <div class="example-box">
-                        <strong>Active:</strong> <em>Having finished</em> his workout, he took a shower.<br>
-                        <strong>Passive:</strong> <em>Having been advised</em> by the doctor, she changed her diet.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quiz Section -->
-        <section id="quiz" class="section">
-            <h2>Quiz - Kiểm tra kiến thức</h2>
-            
-            <div class="mode-selector">
-                <label for="quizMode"><strong>Choose quiz mode:</strong></label>
-                <select id="quizMode" onchange="changeQuizMode()">
-                    <option value="vocabulary">Vocabulary</option>
-                    <option value="grammar">Grammar</option>
-                    <option value="reading">Reading</option>
-                    <option value="mixed">Mixed</option>
-                </select>
-            </div>
-
-            <div class="quiz-container">
-                <div class="quiz-question" id="quizQuestion">Choose a quiz mode to start</div>
-                <div class="quiz-options" id="quizOptions"></div>
-                <div class="quiz-controls">
-                    <div class="quiz-score">
-                        Score: <span id="quizScore">0</span>/<span id="totalQuestions">0</span>
-                    </div>
-                    <button class="control-btn" onclick="nextQuestion()">Next Question</button>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <script>
-        // Vocabulary data
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="min-h-full">
+  <div id="app" class="min-h-full flex flex-col"></div>
+  <script>
+        const defaultConfig = {
+            unit_title: "Unit 7: Healthy Lifestyle",
+            home_button_text: "🏠 Trang chủ",
+            background_color: "#f0f9ff",
+            surface_color: "#ffffff",
+            text_color: "#1e293b",
+            primary_action_color: "#3b82f6",
+            secondary_action_color: "#64748b",
+            font_family: "Segoe UI",
+            font_size: 16
+        };
+        
+        let appState = {
+            currentSection: 'vocabulary',
+            currentVocabIndex: 0,
+            isFlipped: false,
+            currentGrammarTopic: null,
+            readingAnswers: {},
+            grammarAnswers: {},
+            completedVocabCards: new Set(),
+            progressData: null,
+            vocabQuizAnswers: {},
+            currentQuizIndex: 0,
+            vocabSubSection: 'flashcards' // 'flashcards' or 'quiz'
+        };
+        
         const vocabularyData = [
             {
-                word: "nutrition",
-                pronunciation: "/njuːˈtrɪʃən/",
-                meaning: "dinh dưỡng",
-                example: "Good nutrition is essential for a healthy lifestyle."
+                word: "pace",
+                ipa: "/peɪs/",
+                type: "noun, verb",
+                meaning: "tốc độ, nhịp độ",
+                example: "Students can learn at their own pace in online courses."
             },
             {
-                word: "exercise",
-                pronunciation: "/ˈeksəsaɪz/",
-                meaning: "tập thể dục",
-                example: "Regular exercise helps maintain physical fitness."
+                word: "course",
+                ipa: "/kɔːrs/",
+                type: "noun",
+                meaning: "khóa học",
+                example: "I enrolled in a programming course to improve my skills."
             },
             {
-                word: "balanced diet",
-                pronunciation: "/ˈbælənst ˈdaɪət/",
-                meaning: "chế độ ăn cân bằng",
-                example: "A balanced diet includes fruits, vegetables, and proteins."
+                word: "description",
+                ipa: "/dɪˈskrɪpʃn/",
+                type: "noun",
+                meaning: "mô tả, sự miêu tả",
+                example: "The course description explains what students will learn."
             },
             {
-                word: "wellness",
-                pronunciation: "/ˈwelnəs/",
-                meaning: "sức khỏe tổng thể",
-                example: "Wellness programs focus on both physical and mental health."
+                word: "own",
+                ipa: "/oʊn/",
+                type: "adjective, verb",
+                meaning: "sở hữu, của riêng",
+                example: "Each student has their own learning style."
             },
             {
-                word: "metabolism",
-                pronunciation: "/məˈtæbəlɪzəm/",
-                meaning: "trao đổi chất",
-                example: "Regular exercise can boost your metabolism."
+                word: "pocket",
+                ipa: "/ˈpɑːkɪt/",
+                type: "noun",
+                meaning: "túi, bỏ túi",
+                example: "Mobile learning puts education right in your pocket."
             },
             {
-                word: "cardiovascular",
-                pronunciation: "/ˌkɑːdioʊˈvæskjələr/",
-                meaning: "tim mạch",
-                example: "Swimming is excellent for cardiovascular health."
+                word: "long-life",
+                ipa: "/lɔːŋ laɪf/",
+                type: "adjective",
+                meaning: "lâu dài, bền lâu",
+                example: "Long-life learning is essential in today's world."
             },
             {
-                word: "immunity",
-                pronunciation: "/ɪˈmjuːnəti/",
-                meaning: "miễn dịch",
-                example: "Vitamin C helps strengthen your immunity."
+                word: "website",
+                ipa: "/ˈwebsaɪt/",
+                type: "noun",
+                meaning: "trang web",
+                example: "The educational website offers free courses to everyone."
             },
             {
-                word: "hydration",
-                pronunciation: "/haɪˈdreɪʃən/",
-                meaning: "sự cung cấp nước",
-                example: "Proper hydration is crucial during exercise."
+                word: "whatever",
+                ipa: "/wətˈevər/",
+                type: "pronoun",
+                meaning: "bất cứ gì, dù gì",
+                example: "You can study whatever subject interests you most."
             },
             {
-                word: "organic",
-                pronunciation: "/ɔːrˈɡænɪk/",
-                meaning: "hữu cơ",
-                example: "Many people prefer organic vegetables for better health."
+                word: "software",
+                ipa: "/ˈsɔːftwer/",
+                type: "noun",
+                meaning: "phần mềm",
+                example: "Educational software makes learning more interactive."
             },
             {
-                word: "meditation",
-                pronunciation: "/ˌmedɪˈteɪʃən/",
-                meaning: "thiền định",
-                example: "Daily meditation can reduce stress and improve focus."
+                word: "platform",
+                ipa: "/ˈplætfɔːrm/",
+                type: "noun",
+                meaning: "nền tảng",
+                example: "This learning platform supports millions of students."
             },
             {
-                word: "stamina",
-                pronunciation: "/ˈstæmɪnə/",
-                meaning: "sức bền",
-                example: "Running regularly will improve your stamina."
+                word: "lecture",
+                ipa: "/ˈlektʃər/",
+                type: "noun, verb",
+                meaning: "bài giảng, giảng bài",
+                example: "The professor's lecture was very informative."
             },
             {
-                word: "flexibility",
-                pronunciation: "/ˌfleksəˈbɪləti/",
-                meaning: "sự linh hoạt",
-                example: "Yoga enhances flexibility and balance."
+                word: "interact",
+                ipa: "/ˌɪntərˈækt/",
+                type: "verb",
+                meaning: "tương tác",
+                example: "Students can interact with teachers through video calls."
             },
             {
-                word: "antioxidant",
-                pronunciation: "/ˌæntiˈɑːksɪdənt/",
-                meaning: "chất chống oxy hóa",
-                example: "Berries are rich in antioxidants that fight aging."
+                word: "delete",
+                ipa: "/dɪˈliːt/",
+                type: "verb",
+                meaning: "xóa",
+                example: "You can delete old files to free up storage space."
             },
             {
-                word: "calorie",
-                pronunciation: "/ˈkæləri/",
-                meaning: "calo",
-                example: "Counting calories can help with weight management."
+                word: "chunk",
+                ipa: "/tʃʌŋk/",
+                type: "noun",
+                meaning: "khối, phần",
+                example: "Break down complex topics into smaller chunks."
             },
             {
-                word: "protein",
-                pronunciation: "/ˈproʊtiːn/",
-                meaning: "protein",
-                example: "Protein is essential for muscle growth and repair."
+                word: "instructor",
+                ipa: "/ɪnˈstrʌktər/",
+                type: "noun",
+                meaning: "giảng viên, người hướng dẫn",
+                example: "The instructor provides feedback on student assignments."
             },
             {
-                word: "fiber",
-                pronunciation: "/ˈfaɪbər/",
-                meaning: "chất xơ",
-                example: "Foods high in fiber aid digestion and prevent disease."
+                word: "sadly",
+                ipa: "/ˈsædli/",
+                type: "adverb",
+                meaning: "đáng buồn, tiếc là",
+                example: "Sadly, not everyone has access to quality education."
             },
             {
-                word: "supplement",
-                pronunciation: "/ˈsʌpləmənt/",
-                meaning: "thực phẩm bổ sung",
-                example: "Some people take vitamin supplements to boost their health."
+                word: "hire",
+                ipa: "/haɪər/",
+                type: "verb",
+                meaning: "thuê, tuyển dụng",
+                example: "Companies hire graduates with strong technical skills."
             },
             {
-                word: "detox",
-                pronunciation: "/ˈdiːtɑːks/",
-                meaning: "giải độc",
-                example: "A detox diet can help cleanse your body of toxins."
+                word: "technology",
+                ipa: "/tekˈnɑːlədʒi/",
+                type: "noun",
+                meaning: "công nghệ",
+                example: "Technology has revolutionized modern education."
             },
             {
-                word: "mindfulness",
-                pronunciation: "/ˈmaɪndfəlnəs/",
-                meaning: "chánh niệm",
-                example: "Mindfulness practices can improve mental well-being."
+                word: "concentrate",
+                ipa: "/ˈkɑːnsntreɪt/",
+                type: "verb",
+                meaning: "tập trung",
+                example: "Students need to concentrate during online classes."
             },
             {
-                word: "vitality",
-                pronunciation: "/vaɪˈtæləti/",
-                meaning: "sức sống",
-                example: "Regular sleep and exercise contribute to overall vitality."
+                word: "prepare",
+                ipa: "/prɪˈper/",
+                type: "verb",
+                meaning: "chuẩn bị",
+                example: "Teachers prepare lessons using digital tools."
+            },
+            {
+                word: "give",
+                ipa: "/ɡɪv/",
+                type: "verb",
+                meaning: "đưa, cho",
+                example: "Online platforms give students access to global education."
+            },
+            {
+                word: "carry",
+                ipa: "/ˈkæri/",
+                type: "verb",
+                meaning: "mang, thực hiện",
+                example: "Students can carry their entire library on a tablet."
+            },
+            {
+                word: "presentation",
+                ipa: "/ˌpriːznˈteɪʃn/",
+                type: "noun",
+                meaning: "bài thuyết trình",
+                example: "Students gave excellent presentations using digital tools."
+            },
+            {
+                word: "language",
+                ipa: "/ˈlæŋɡwɪdʒ/",
+                type: "noun",
+                meaning: "ngôn ngữ",
+                example: "Learning a new language opens many opportunities."
+            },
+            {
+                word: "create",
+                ipa: "/kriˈeɪt/",
+                type: "verb",
+                meaning: "tạo ra, sáng tạo",
+                example: "Teachers create engaging content for their students."
+            },
+            {
+                word: "icon",
+                ipa: "/ˈaɪkɑːn/",
+                type: "noun",
+                meaning: "biểu tượng",
+                example: "Click on the icon to open the learning app."
+            },
+            {
+                word: "confirmation",
+                ipa: "/ˌkɑːnfərˈmeɪʃn/",
+                type: "noun",
+                meaning: "xác nhận",
+                example: "You'll receive a confirmation email after enrollment."
+            },
+            {
+                word: "digital",
+                ipa: "/ˈdɪdʒɪtl/",
+                type: "adjective",
+                meaning: "kỹ thuật số",
+                example: "Digital learning has become increasingly popular."
+            },
+            {
+                word: "update",
+                ipa: "/ʌpˈdeɪt/",
+                type: "verb, noun",
+                meaning: "cập nhật",
+                example: "The app sends updates about new course materials."
+            },
+            {
+                word: "without",
+                ipa: "/wɪˈðaʊt/",
+                type: "preposition",
+                meaning: "không có, thiếu",
+                example: "Students can learn without leaving their homes."
+            },
+            {
+                word: "imagine",
+                ipa: "/ɪˈmædʒɪn/",
+                type: "verb",
+                meaning: "tưởng tượng",
+                example: "Imagine learning from the world's best teachers online."
+            },
+            {
+                word: "advertise",
+                ipa: "/ˈædvərtaɪz/",
+                type: "verb",
+                meaning: "quảng cáo",
+                example: "Universities advertise their online programs globally."
+            },
+            {
+                word: "normal",
+                ipa: "/ˈnɔːrml/",
+                type: "adjective",
+                meaning: "bình thường",
+                example: "Online learning has become the new normal."
+            },
+            {
+                word: "information",
+                ipa: "/ˌɪnfərˈmeɪʃn/",
+                type: "noun",
+                meaning: "thông tin",
+                example: "Students can access vast amounts of information online."
+            },
+            {
+                word: "e-book",
+                ipa: "/ˈiː bʊk/",
+                type: "noun",
+                meaning: "sách điện tử",
+                example: "E-books are more convenient than traditional textbooks."
+            },
+            {
+                word: "exist",
+                ipa: "/ɪɡˈzɪst/",
+                type: "verb",
+                meaning: "tồn tại",
+                example: "Many free educational resources exist online."
+            },
+            {
+                word: "permission",
+                ipa: "/pərˈmɪʃn/",
+                type: "noun",
+                meaning: "sự cho phép",
+                example: "Students need permission to access certain course materials."
+            },
+            {
+                word: "capture",
+                ipa: "/ˈkæptʃər/",
+                type: "verb",
+                meaning: "ghi lại, thu được",
+                example: "Screen recording can capture important lecture moments."
+            },
+            {
+                word: "article",
+                ipa: "/ˈɑːrtɪkl/",
+                type: "noun",
+                meaning: "bài báo, bài viết",
+                example: "Students read articles to supplement their learning."
+            },
+            {
+                word: "app",
+                ipa: "/æp/",
+                type: "noun",
+                meaning: "ứng dụng",
+                example: "The learning app works on both phones and tablets."
+            },
+            {
+                word: "bite-sized",
+                ipa: "/baɪt saɪzd/",
+                type: "adjective",
+                meaning: "nhỏ gọn, dễ tiêu hóa",
+                example: "Bite-sized lessons are perfect for busy students."
+            },
+            {
+                word: "lazy",
+                ipa: "/ˈleɪzi/",
+                type: "adjective",
+                meaning: "lười biếng",
+                example: "Don't be lazy - complete your assignments on time."
+            },
+            {
+                word: "assignment",
+                ipa: "/əˈsaɪnmənt/",
+                type: "noun",
+                meaning: "bài tập, nhiệm vụ",
+                example: "The assignment is due next Friday."
+            },
+            {
+                word: "material",
+                ipa: "/məˈtɪriəl/",
+                type: "noun",
+                meaning: "tài liệu, vật liệu",
+                example: "All course materials are available online."
+            },
+            {
+                word: "real",
+                ipa: "/riːl/",
+                type: "adjective",
+                meaning: "thực, thật",
+                example: "Online courses provide real-world skills."
+            },
+            {
+                word: "developer",
+                ipa: "/dɪˈveləpər/",
+                type: "noun",
+                meaning: "nhà phát triển",
+                example: "App developers create educational software."
+            },
+            {
+                word: "teaching",
+                ipa: "/ˈtiːtʃɪŋ/",
+                type: "noun",
+                meaning: "việc dạy học",
+                example: "Online teaching requires different skills than classroom teaching."
+            },
+            {
+                word: "perfectly",
+                ipa: "/ˈpɜːrfɪktli/",
+                type: "adverb",
+                meaning: "hoàn hảo, hoàn toàn",
+                example: "The video quality works perfectly for online lectures."
+            },
+            {
+                word: "professional",
+                ipa: "/prəˈfeʃənl/",
+                type: "adjective, noun",
+                meaning: "chuyên nghiệp",
+                example: "Professional development courses help advance careers."
+            },
+            {
+                word: "way",
+                ipa: "/weɪ/",
+                type: "noun",
+                meaning: "cách, phương pháp",
+                example: "Online learning is an effective way to gain new skills."
             }
         ];
-
-        // Reading text with highlighted vocabulary
-        const readingText = `
-            Living a <span class="highlight-word tooltip">healthy<span class="tooltiptext">khỏe mạnh</span></span> lifestyle has become increasingly important in today's fast-paced world. With rising rates of chronic diseases and mental health issues, people are recognizing the need to prioritize their <span class="highlight-word tooltip">wellness<span class="tooltiptext">sức khỏe tổng thể</span></span> and make conscious choices about their daily habits.
-
-            <span class="highlight-word tooltip">Nutrition<span class="tooltiptext">dinh dưỡng</span></span> plays a fundamental role in maintaining good health. A <span class="highlight-word tooltip">balanced diet<span class="tooltiptext">chế độ ăn cân bằng</span></span> rich in fruits, vegetables, whole grains, and lean <span class="highlight-word tooltip">proteins<span class="tooltiptext">protein</span></span> provides the body with essential nutrients needed for optimal function. <span class="highlight-word tooltip">Organic<span class="tooltiptext">hữu cơ</span></span> foods, while often more expensive, can reduce exposure to harmful pesticides and chemicals. Additionally, foods high in <span class="highlight-word tooltip">fiber<span class="tooltiptext">chất xơ</span></span> and <span class="highlight-word tooltip">antioxidants<span class="tooltiptext">chất chống oxy hóa</span></span> help protect against disease and promote longevity.
-
-            Regular physical <span class="highlight-word tooltip">exercise<span class="tooltiptext">tập thể dục</span></span> is equally crucial for maintaining health. <span class="highlight-word tooltip">Cardiovascular<span class="tooltiptext">tim mạch</span></span> activities like running, swimming, or cycling strengthen the heart and improve circulation. Strength training builds muscle mass and bone density, while activities like yoga enhance <span class="highlight-word tooltip">flexibility<span class="tooltiptext">sự linh hoạt</span></span> and balance. Regular exercise also boosts <span class="highlight-word tooltip">metabolism<span class="tooltiptext">trao đổi chất</span></span>, helping the body burn <span class="highlight-word tooltip">calories<span class="tooltiptext">calo</span></span> more efficiently and maintain a healthy weight.
-
-            Mental health is an often overlooked aspect of wellness. Practices like <span class="highlight-word tooltip">meditation<span class="tooltiptext">thiền định</span></span> and <span class="highlight-word tooltip">mindfulness<span class="tooltiptext">chánh niệm</span></span> can significantly reduce stress and improve emotional well-being. Adequate sleep, typically 7-9 hours per night, is essential for mental clarity, <span class="highlight-word tooltip">immunity<span class="tooltiptext">miễn dịch</span></span>, and physical recovery. Managing stress through healthy coping mechanisms prevents the negative effects of chronic stress on both mind and body.
-
-            <span class="highlight-word tooltip">Hydration<span class="tooltiptext">sự cung cấp nước</span></span> is another critical component of health that many people neglect. Drinking adequate water throughout the day supports digestion, regulates body temperature, and helps transport nutrients to cells. Some people also benefit from nutritional <span class="highlight-word tooltip">supplements<span class="tooltiptext">thực phẩm bổ sung</span></span>, though these should complement, not replace, a healthy diet.
-
-            Building <span class="highlight-word tooltip">stamina<span class="tooltiptext">sức bền</span></span> and maintaining <span class="highlight-word tooltip">vitality<span class="tooltiptext">sức sống</span></span> requires consistency and patience. Small, sustainable changes in diet and exercise habits often yield better long-term results than dramatic lifestyle overhauls. Some people find that periodic <span class="highlight-word tooltip">detox<span class="tooltiptext">giải độc</span></span> programs help reset their eating habits and eliminate processed foods from their diet.
-
-            The benefits of a healthy lifestyle extend beyond physical appearance. People who maintain healthy habits report higher energy levels, better mood, improved cognitive function, and greater overall life satisfaction. While the initial effort to establish healthy routines may seem challenging, the long-term rewards make it a worthwhile investment in one's future well-being.
-        `;
-
-        // Reading comprehension questions
-        const readingQuestions = [
+        
+        const vocabularyQuiz = [
             {
-                question: "According to the passage, why has living a healthy lifestyle become increasingly important?",
-                options: [
-                    "Because of fast-paced life and rising rates of chronic diseases",
-                    "Because organic foods are becoming more expensive",
-                    "Because people have more free time",
-                    "Because of technological development"
-                ],
+                question: "What does 'pace' mean?",
+                options: ["tốc độ, nhịp độ", "không gian", "thời gian", "khoảng cách"],
                 correct: 0
             },
             {
-                question: "What should a balanced diet include?",
+                question: "Choose the correct meaning of 'course':",
+                options: ["đường đi", "khóa học", "nguồn gốc", "nguyên nhân"],
+                correct: 1
+            },
+            {
+                question: "'Description' means:",
+                options: ["quyết định", "mô tả, sự miêu tả", "thảo luận", "tranh luận"],
+                correct: 1
+            },
+            {
+                question: "What is the meaning of 'platform'?",
+                options: ["máy bay", "nền tảng", "hành tinh", "kế hoạch"],
+                correct: 1
+            },
+            {
+                question: "'Software' refers to:",
+                options: ["phần cứng", "phần mềm", "đồ nội thất", "quần áo"],
+                correct: 1
+            },
+            {
+                question: "The word 'interact' means:",
+                options: ["giao tiếp", "tương tác", "can thiệp", "làm phiền"],
+                correct: 1
+            },
+            {
+                question: "'Technology' means:",
+                options: ["sinh học", "công nghệ", "địa lý", "lịch sử"],
+                correct: 1
+            },
+            {
+                question: "What does 'digital' mean?",
+                options: ["tương tự", "kỹ thuật số", "thủ công", "cơ khí"],
+                correct: 1
+            },
+            {
+                question: "'Application' or 'app' refers to:",
+                options: ["đơn xin việc", "ứng dụng", "áp dụng", "chấp thuận"],
+                correct: 1
+            },
+            {
+                question: "The meaning of 'assignment' is:",
+                options: ["phân công", "bài tập, nhiệm vụ", "hẹn gặp", "thỏa thuận"],
+                correct: 1
+            },
+            {
+                question: "'Material' means:",
+                options: ["mẹ", "vật chất", "tài liệu, vật liệu", "quan trọng"],
+                correct: 2
+            },
+            {
+                question: "What does 'professional' mean?",
+                options: ["giáo sư", "chuyên nghiệp", "nghề nghiệp", "chuyên gia"],
+                correct: 1
+            },
+            {
+                question: "'Developer' refers to:",
+                options: ["nhà phát triển", "nhà phát minh", "nhà thiết kế", "nhà sản xuất"],
+                correct: 0
+            },
+            {
+                question: "The word 'create' means:",
+                options: ["sáng tạo", "tạo ra, sáng tạo", "phá hủy", "thay đổi"],
+                correct: 1
+            },
+            {
+                question: "'Information' means:",
+                options: ["tin tức", "thông tin", "thông báo", "báo cáo"],
+                correct: 1
+            },
+            {
+                question: "What does 'update' mean?",
+                options: ["lỗi thời", "cập nhật", "hủy bỏ", "xóa"],
+                correct: 1
+            },
+            {
+                question: "'Permission' refers to:",
+                options: ["cấm đoán", "sự cho phép", "quyền lực", "trách nhiệm"],
+                correct: 1
+            },
+            {
+                question: "The meaning of 'capture' is:",
+                options: ["thả ra", "ghi lại, thu được", "thoát khỏi", "ẩn giấu"],
+                correct: 1
+            },
+            {
+                question: "'Article' means:",
+                options: ["nghệ thuật", "bài báo, bài viết", "vật phẩm", "điều khoản"],
+                correct: 1
+            },
+            {
+                question: "What does 'normal' mean?",
+                options: ["bất thường", "bình thường", "đặc biệt", "khác thường"],
+                correct: 1
+            },
+            {
+                question: "'Imagine' means:",
+                options: ["nhớ lại", "tưởng tượng", "quên đi", "hiểu được"],
+                correct: 1
+            },
+            {
+                question: "The word 'exist' means:",
+                options: ["biến mất", "tồn tại", "xuất hiện", "phát triển"],
+                correct: 1
+            },
+            {
+                question: "'Language' refers to:",
+                options: ["ngôn ngữ", "văn học", "từ vựng", "ngữ pháp"],
+                correct: 0
+            },
+            {
+                question: "What does 'presentation' mean?",
+                options: ["hiện tại", "bài thuyết trình", "quà tặng", "đại diện"],
+                correct: 1
+            },
+            {
+                question: "'Instructor' means:",
+                options: ["học sinh", "giảng viên, người hướng dẫn", "giám đốc", "thư ký"],
+                correct: 1
+            },
+            {
+                question: "The meaning of 'lecture' is:",
+                options: ["đọc sách", "bài giảng, giảng bài", "viết bài", "nghe nhạc"],
+                correct: 1
+            },
+            {
+                question: "'Website' refers to:",
+                options: ["trang web", "mạng internet", "máy tính", "điện thoại"],
+                correct: 0
+            },
+            {
+                question: "What does 'concentrate' mean?",
+                options: ["phân tán", "tập trung", "thư giãn", "nghỉ ngơi"],
+                correct: 1
+            },
+            {
+                question: "'Prepare' means:",
+                options: ["hoàn thành", "chuẩn bị", "bắt đầu", "kết thúc"],
+                correct: 1
+            },
+            {
+                question: "The word 'carry' means:",
+                options: ["để lại", "mang, thực hiện", "ném đi", "giấu đi"],
+                correct: 1
+            },
+            {
+                question: "'Teaching' refers to:",
+                options: ["học tập", "việc dạy học", "nghiên cứu", "thí nghiệm"],
+                correct: 1
+            },
+            {
+                question: "What does 'perfectly' mean?",
+                options: ["không hoàn hảo", "hoàn hảo, hoàn toàn", "gần như", "có thể"],
+                correct: 1
+            },
+            {
+                question: "'Way' means:",
+                options: ["lý do", "cách, phương pháp", "kết quả", "nguyên nhân"],
+                correct: 1
+            },
+            {
+                question: "The meaning of 'real' is:",
+                options: ["giả", "thực, thật", "ảo", "tưởng tượng"],
+                correct: 1
+            },
+            {
+                question: "'Bite-sized' means:",
+                options: ["to lớn", "nhỏ gọn, dễ tiêu hóa", "trung bình", "khổng lồ"],
+                correct: 1
+            },
+            {
+                question: "What does 'lazy' mean?",
+                options: ["chăm chỉ", "lười biếng", "nhanh nhẹn", "tích cực"],
+                correct: 1
+            },
+            {
+                question: "'Confirmation' refers to:",
+                options: ["từ chối", "xác nhận", "nghi ngờ", "phủ nhận"],
+                correct: 1
+            },
+            {
+                question: "The word 'icon' means:",
+                options: ["âm thanh", "biểu tượng", "màu sắc", "hình dạng"],
+                correct: 1
+            },
+            {
+                question: "'Advertise' means:",
+                options: ["che giấu", "quảng cáo", "cấm đoán", "phê bình"],
+                correct: 1
+            },
+            {
+                question: "What does 'without' mean?",
+                options: ["cùng với", "không có, thiếu", "bên trong", "xung quanh"],
+                correct: 1
+            },
+            {
+                question: "'Delete' means:",
+                options: ["thêm vào", "xóa", "sao chép", "di chuyển"],
+                correct: 1
+            },
+            {
+                question: "The meaning of 'chunk' is:",
+                options: ["toàn bộ", "khối, phần", "chi tiết", "tổng thể"],
+                correct: 1
+            },
+            {
+                question: "'Sadly' means:",
+                options: ["vui vẻ", "đáng buồn, tiếc là", "hạnh phúc", "phấn khích"],
+                correct: 1
+            },
+            {
+                question: "What does 'hire' mean?",
+                options: ["sa thải", "thuê, tuyển dụng", "nghỉ việc", "thăng chức"],
+                correct: 1
+            },
+            {
+                question: "'Give' means:",
+                options: ["nhận", "đưa, cho", "giữ lại", "mượn"],
+                correct: 1
+            },
+            {
+                question: "The word 'own' means:",
+                options: ["mượn", "sở hữu, của riêng", "cho thuê", "chia sẻ"],
+                correct: 1
+            },
+            {
+                question: "'Pocket' refers to:",
+                options: ["túi, bỏ túi", "ví tiền", "cặp sách", "hộp đựng"],
+                correct: 0
+            },
+            {
+                question: "What does 'long-life' mean?",
+                options: ["ngắn hạn", "lâu dài, bền lâu", "tạm thời", "nhanh chóng"],
+                correct: 1
+            },
+            {
+                question: "'Whatever' means:",
+                options: ["một cái gì đó", "bất cứ gì, dù gì", "không có gì", "mọi thứ"],
+                correct: 1
+            },
+            {
+                question: "The meaning of 'e-book' is:",
+                options: ["sách giấy", "sách điện tử", "tạp chí", "báo"],
+                correct: 1
+            }
+        ];
+        
+        const readingText = `Modern <span class="highlight">technology</span> has revolutionized education through online learning <span class="highlight">platforms</span>. Students can now access <span class="highlight">courses</span> from top universities <span class="highlight">without</span> leaving their homes. These <span class="highlight">digital</span> learning environments allow learners to study at their own <span class="highlight">pace</span>, making education more flexible than ever before.
+
+Educational <span class="highlight">apps</span> and <span class="highlight">software</span> provide interactive lessons that help students <span class="highlight">concentrate</span> better. <span class="highlight">Instructors</span> can <span class="highlight">create</span> engaging content using multimedia tools, while students can <span class="highlight">interact</span> with materials through videos, quizzes, and simulations. Many platforms offer <span class="highlight">bite-sized</span> lessons that fit perfectly into busy schedules.
+
+Online education also provides access to vast amounts of <span class="highlight">information</span> and <span class="highlight">materials</span>. Students can read <span class="highlight">e-books</span>, watch <span class="highlight">lectures</span>, and complete <span class="highlight">assignments</span> using various <span class="highlight">devices</span>. <span class="highlight">Professional</span> <span class="highlight">developers</span> continuously <span class="highlight">update</span> these learning systems to improve user experience. This <span class="highlight">way</span> of learning has become the new <span class="highlight">normal</span>, especially after recent global changes. Students can <span class="highlight">prepare</span> for their future careers by gaining <span class="highlight">real</span> skills through online <span class="highlight">teaching</span> methods. The flexibility to learn <span class="highlight">whatever</span> subject interests them most makes online education incredibly valuable for <span class="highlight">long-life</span> learning goals.`;
+        
+        const readingQuestions = [
+            {
+                question: "What has revolutionized education according to the text?",
                 options: [
-                    "Only fruits and vegetables",
-                    "Fruits, vegetables, whole grains, and lean proteins",
-                    "Only organic foods",
-                    "Only nutritional supplements"
+                    "Traditional classrooms",
+                    "Modern technology and online learning platforms",
+                    "Printed textbooks",
+                    "Face-to-face lectures only"
                 ],
                 correct: 1
             },
             {
-                question: "What cardiovascular activities are mentioned in the passage?",
+                question: "What advantage do digital learning environments offer students?",
                 options: [
-                    "Only yoga",
-                    "Only weight training",
-                    "Running, swimming, or cycling",
-                    "Only meditation"
+                    "Fixed study schedules",
+                    "Limited course options", 
+                    "Study at their own pace",
+                    "Only weekend classes"
                 ],
                 correct: 2
             },
             {
-                question: "According to the passage, how many hours of sleep are needed per night?",
+                question: "What type of lessons do many platforms offer for busy schedules?",
                 options: [
-                    "5-6 hours",
-                    "7-9 hours",
-                    "10-12 hours",
-                    "It doesn't matter"
+                    "Long lectures",
+                    "Bite-sized lessons",
+                    "Full-day courses",
+                    "Weekend workshops"
                 ],
                 correct: 1
             },
             {
-                question: "Benefits of a healthy lifestyle include:",
+                question: "Who continuously updates learning systems?",
                 options: [
-                    "Only physical appearance",
-                    "Only good health",
-                    "Higher energy levels, better mood, improved cognitive function",
-                    "Only weight loss"
+                    "Students",
+                    "Parents",
+                    "Professional developers",
+                    "Government officials"
+                ],
+                correct: 2
+            },
+            {
+                question: "What makes online education valuable for long-life learning?",
+                options: [
+                    "High costs",
+                    "Limited subjects",
+                    "Flexibility to learn whatever subject interests them most",
+                    "Strict time requirements"
                 ],
                 correct: 2
             }
         ];
+        
+        const grammarTopics = {
+            participial: {
+                title: "Participial Phrases",
+                theory: `<strong>Participial Phrases</strong> là cụm từ bắt đầu bằng phân từ (V-ing hoặc V-ed/V3) dùng để rút gọn mệnh đề quan hệ hoặc mệnh đề trạng ngữ.
 
-        // Quiz questions for different modes
-        const quizData = {
-            vocabulary: [
-                {
-                    question: "What does 'nutrition' mean?",
-                    options: ["Exercise", "The process of providing food", "Wellness", "Metabolism"],
-                    correct: 1
-                },
-                {
-                    question: "Which word means 'substances that prevent damage from free radicals'?",
-                    options: ["Vitamins", "Antioxidants", "Proteins", "Calories"],
-                    correct: 1
-                },
-                {
-                    question: "What does 'flexibility' refer to?",
-                    options: ["Stamina", "Vitality", "The ability to bend easily", "Immunity"],
-                    correct: 2
-                },
-                {
-                    question: "Complete the sentence: 'Regular exercise can boost your ____.'",
-                    options: ["metabolism", "flexibility", "mindfulness", "organic"],
-                    correct: 0
-                },
-                {
-                    question: "What is 'mindfulness'?",
-                    options: ["Physical exercise", "The practice of being aware and present", "A type of diet", "Cardiovascular health"],
-                    correct: 1
+<strong>Cấu trúc:</strong>
+• Present Participle (V-ing): diễn tả hành động chủ động
+• Past Participle (V-ed/V3): diễn tả hành động bị động
+
+<strong>Ví dụ:</strong>
+• Walking in the park, I saw many people exercising. (Khi đang đi bộ trong công viên, tôi thấy nhiều người tập thể dục)
+• Exhausted from the workout, she decided to rest. (Kiệt sức sau buổi tập, cô ấy quyết định nghỉ ngơi)
+
+<strong>Cách dùng:</strong>
+1. Rút gọn mệnh đề quan hệ: The girl who is running → The girl running
+2. Rút gọn mệnh đề trạng ngữ chỉ thời gian, nguyên nhân: Because she felt tired → Feeling tired`
+            },
+            infinitive: {
+                title: "To-infinitive Clauses",
+                theory: `<strong>To-infinitive Clauses</strong> là mệnh đề bắt đầu bằng "to + V" dùng để diễn tả mục đích, kết quả hoặc bổ nghĩa cho danh từ/tính từ.
+
+<strong>Cấu trúc:</strong>
+• To + V (infinitive)
+• To + be + V-ed/V3 (passive infinitive)
+
+<strong>Ví dụ:</strong>
+• She exercises daily to stay healthy. (Cô ấy tập thể dục hàng ngày để giữ sức khỏe)
+• To maintain good health, you need a balanced diet. (Để duy trì sức khỏe tốt, bạn cần chế độ ăn cân bằng)
+
+<strong>Cách dùng:</strong>
+1. Diễn tả mục đích: I eat vegetables to get vitamins
+2. Bổ nghĩa cho tính từ: It's important to exercise regularly
+3. Bổ nghĩa cho danh từ: The best way to lose weight is exercising`
+            },
+            perfectGerund: {
+                title: "Perfect Gerunds",
+                theory: `<strong>Perfect Gerunds</strong> là dạng danh động từ hoàn thành (having + V-ed/V3) dùng để diễn tả hành động đã hoàn thành trước một hành động khác trong quá khứ.
+
+<strong>Cấu trúc:</strong>
+• Having + V-ed/V3 (active)
+• Having been + V-ed/V3 (passive)
+
+<strong>Ví dụ:</strong>
+• She regrets not having exercised regularly when she was young. (Cô ấy hối hận vì đã không tập thể dục đều đặn khi còn trẻ)
+• Having eaten a healthy breakfast, he felt energized. (Sau khi đã ăn bữa sáng lành mạnh, anh ấy cảm thấy tràn đầy năng lượng)
+
+<strong>Cách dùng:</strong>
+1. Sau động từ: regret, deny, admit + having V-ed/V3
+2. Diễn tả hành động xảy ra trước: Having finished the workout, she took a shower`
+            },
+            perfectParticiple: {
+                title: "Perfect Participle Clauses",
+                theory: `<strong>Perfect Participle Clauses</strong> là mệnh đề phân từ hoàn thành (having + V-ed/V3) dùng để rút gọn mệnh đề trạng ngữ chỉ thời gian hoặc nguyên nhân khi hành động này xảy ra trước hành động khác.
+
+<strong>Cấu trúc:</strong>
+• Having + V-ed/V3 (active)
+• Having been + V-ed/V3 (passive)
+
+<strong>Ví dụ:</strong>
+• Having completed the marathon, she felt proud of herself. (Sau khi hoàn thành marathon, cô ấy cảm thấy tự hào về bản thân)
+• Having been advised by the doctor, he changed his diet. (Sau khi được bác sĩ tư vấn, anh ấy thay đổi chế độ ăn)
+
+<strong>Cách dùng:</strong>
+1. Rút gọn mệnh đề thời gian: After he had exercised → Having exercised
+2. Rút gọn mệnh đề nguyên nhân: Because she had eaten well → Having eaten well`
+            }
+        };
+        
+        const comprehensiveTest = [
+            { question: "_____ in the gym for two hours, Mark felt exhausted.", options: ["Exercise", "Exercising", "Having exercised", "To exercise"], correct: 2 },
+            { question: "The best way _____ weight is combining diet and exercise.", options: ["lose", "to lose", "losing", "lost"], correct: 1 },
+            { question: "_____ a healthy breakfast, she went to work.", options: ["Eat", "Eating", "Having eaten", "To eat"], correct: 2 },
+            { question: "People _____ regularly tend to live longer.", options: ["exercise", "exercising", "exercised", "to exercise"], correct: 1 },
+            { question: "_____ by the doctor, he started a new diet plan.", options: ["Advise", "Advising", "Having been advised", "To advise"], correct: 2 },
+            { question: "She went to the gym _____ fit.", options: ["stay", "staying", "to stay", "stayed"], correct: 2 },
+            { question: "_____ the importance of health, many people exercise daily.", options: ["Understand", "Understanding", "To understand", "Understood"], correct: 1 },
+            { question: "He regrets not _____ care of his health earlier.", options: ["take", "taking", "having taken", "to take"], correct: 2 },
+            { question: "_____ from the workout, she drank water.", options: ["Tire", "Tiring", "Tired", "To tire"], correct: 2 },
+            { question: "The program _____ by experts helps people lose weight.", options: ["design", "designing", "designed", "to design"], correct: 2 },
+            { question: "_____ enough sleep is essential for good health.", options: ["Get", "Getting", "To get", "Got"], correct: 1 },
+            { question: "_____ her goal, she celebrated with friends.", options: ["Achieve", "Achieving", "Having achieved", "To achieve"], correct: 2 },
+            { question: "It's important _____ a balanced diet.", options: ["maintain", "maintaining", "to maintain", "maintained"], correct: 2 },
+            { question: "_____ in the morning, he feels more energetic.", options: ["Run", "Running", "To run", "Ran"], correct: 1 },
+            { question: "_____ the marathon, she trained for six months.", options: ["Complete", "Completing", "To complete", "Completed"], correct: 2 },
+            { question: "The food _____ at the restaurant was very nutritious.", options: ["serve", "serving", "served", "to serve"], correct: 2 },
+            { question: "_____ stressed, meditation can help you relax.", options: ["Feel", "Feeling", "To feel", "Felt"], correct: 1 },
+            { question: "He denied _____ junk food regularly.", options: ["eat", "eating", "having eaten", "to eat"], correct: 2 },
+            { question: "_____ by her success, others started exercising too.", options: ["Inspire", "Inspiring", "Inspired", "To inspire"], correct: 2 },
+            { question: "She exercises _____ her stamina.", options: ["improve", "improving", "to improve", "improved"], correct: 2 },
+            { question: "_____ the health benefits, he quit smoking.", options: ["Realize", "Realizing", "Having realized", "To realize"], correct: 2 },
+            { question: "The doctor recommended _____ more vegetables.", options: ["eat", "eating", "to eat", "ate"], correct: 1 },
+            { question: "_____ well last night, she felt refreshed.", options: ["Sleep", "Sleeping", "Having slept", "To sleep"], correct: 2 },
+            { question: "People _____ to stay healthy should exercise regularly.", options: ["want", "wanting", "wanted", "to want"], correct: 1 },
+            { question: "_____ the gym membership, he started working out.", options: ["Buy", "Buying", "Having bought", "To buy"], correct: 2 },
+            { question: "It's necessary _____ enough water daily.", options: ["drink", "drinking", "to drink", "drank"], correct: 2 },
+            { question: "_____ about nutrition, she changed her eating habits.", options: ["Learn", "Learning", "Having learned", "To learn"], correct: 2 },
+            { question: "The exercises _____ by the trainer are very effective.", options: ["recommend", "recommending", "recommended", "to recommend"], correct: 2 },
+            { question: "_____ healthy requires discipline and commitment.", options: ["Stay", "Staying", "To stay", "Stayed"], correct: 1 },
+            { question: "_____ her fitness goals, she felt accomplished.", options: ["Reach", "Reaching", "Having reached", "To reach"], correct: 2 }
+        ];
+
+        let dataHandler = {
+            onDataChanged(data) {
+                if (data.length > 0) {
+                    const record = data[0];
+                    appState.progressData = record;
+                    
+                    if (record.completed_vocab_cards) {
+                        appState.completedVocabCards = new Set(record.completed_vocab_cards.split(',').filter(x => x));
+                    }
+                    if (record.reading_answers) {
+                        appState.readingAnswers = JSON.parse(record.reading_answers);
+                    }
+                    if (record.grammar_answers) {
+                        appState.grammarAnswers = JSON.parse(record.grammar_answers);
+                    }
+                    if (record.vocab_quiz_answers) {
+                        appState.vocabQuizAnswers = JSON.parse(record.vocab_quiz_answers);
+                    }
+                    
+                    renderApp();
                 }
-            ],
-            grammar: [
-                {
-                    question: "Choose the correct sentence using Present Participle:",
-                    options: [
-                        "The man runs in the park is my neighbor.",
-                        "The man running in the park is my neighbor.",
-                        "The man ran in the park is my neighbor.",
-                        "The man to run in the park is my neighbor."
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "How is a Perfect Gerund formed?",
-                    options: [
-                        "V-ing + V3",
-                        "Having + V-ing",
-                        "Having + V3",
-                        "To have + V3"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "Choose the correct sentence with To-infinitive clause:",
-                    options: [
-                        "She exercises regularly for stay healthy.",
-                        "She exercises regularly to stay healthy.",
-                        "She exercises regularly staying healthy.",
-                        "She exercises regularly stayed healthy."
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "Which sentence uses Perfect Participle correctly?",
-                    options: [
-                        "Finishing his workout, he took a shower.",
-                        "Having finished his workout, he took a shower.",
-                        "To finish his workout, he took a shower.",
-                        "Finished his workout, he took a shower."
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "Past Participle is used to:",
-                    options: [
-                        "Show future time",
-                        "Reduce relative clauses in passive voice",
-                        "Show ongoing actions",
-                        "Show purpose only"
-                    ],
-                    correct: 1
-                }
-            ],
-            reading: [
-                {
-                    question: "According to the passage, what plays a fundamental role in maintaining good health?",
-                    options: ["Exercise", "Nutrition", "Adequate sleep", "Drinking water"],
-                    correct: 1
-                },
-                {
-                    question: "Which activity is mentioned as cardiovascular exercise?",
-                    options: ["Yoga", "Weight training", "Swimming", "Meditation"],
-                    correct: 2
-                },
-                {
-                    question: "Foods high in what help protect against disease?",
-                    options: ["Protein", "Calories", "Fiber and antioxidants", "Water"],
-                    correct: 2
-                },
-                {
-                    question: "According to the passage, how many hours of sleep are needed per night?",
-                    options: ["5-6 hours", "7-9 hours", "10-11 hours", "12 hours"],
-                    correct: 1
-                },
-                {
-                    question: "Benefits of a healthy lifestyle include all EXCEPT:",
-                    options: ["Higher energy levels", "Better mood", "Improved cognitive function", "Higher income"],
-                    correct: 3
-                }
-            ],
-            mixed: []
+            }
         };
 
-        // Combine all quiz types for mixed mode
-        quizData.mixed = [...quizData.vocabulary, ...quizData.grammar, ...quizData.reading];
-
-        // Current states
-        let currentSection = 'vocabulary';
-        let currentCardIndex = 0;
-        let isCardFlipped = false;
-        let currentQuizMode = 'vocabulary';
-        let currentQuestionIndex = 0;
-        let quizScore = 0;
-        let selectedAnswer = null;
-        let currentReadingQuestion = 0;
-        let readingScore = 0;
-
-        // Initialize the app
-        function init() {
-            renderVocabulary();
-            renderReading();
-            initializeFlashcards();
-            changeQuizMode();
+        async function initializeApp() {
+            const initResult = await window.dataSdk.init(dataHandler);
+            if (!initResult.isOk) {
+                console.error("Failed to initialize data SDK");
+            }
         }
 
-        // Show section
-        function showSection(sectionName) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
+        async function updateProgress() {
+            const vocabProgress = (appState.completedVocabCards.size / vocabularyData.length) * 100;
+            const readingProgress = (Object.keys(appState.readingAnswers).length / readingQuestions.length) * 100;
+            const grammarProgress = (Object.keys(appState.grammarAnswers).length / comprehensiveTest.length) * 100;
+            const vocabQuizProgress = (Object.keys(appState.vocabQuizAnswers).length / vocabularyQuiz.length) * 100;
             
-            // Remove active class from all nav buttons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            const progressRecord = {
+                vocabulary_progress: vocabProgress,
+                reading_progress: readingProgress,
+                grammar_progress: grammarProgress,
+                vocab_quiz_progress: vocabQuizProgress,
+                completed_vocab_cards: Array.from(appState.completedVocabCards).join(','),
+                reading_answers: JSON.stringify(appState.readingAnswers),
+                grammar_answers: JSON.stringify(appState.grammarAnswers),
+                vocab_quiz_answers: JSON.stringify(appState.vocabQuizAnswers)
+            };
             
-            // Show selected section
-            document.getElementById(sectionName).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-            
-            currentSection = sectionName;
+            if (appState.progressData && appState.progressData.__backendId) {
+                await window.dataSdk.update({ ...progressRecord, __backendId: appState.progressData.__backendId });
+            } else {
+                await window.dataSdk.create(progressRecord);
+            }
         }
 
-        // Render vocabulary cards
+        function playSound(isCorrect) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            if (isCorrect) {
+                oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime);
+                oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1);
+                oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2);
+            } else {
+                oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+                oscillator.frequency.setValueAtTime(150, audioContext.currentTime + 0.15);
+            }
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+        }
+
+        function calculateTotalProgress() {
+            const vocabProgress = (appState.completedVocabCards.size / vocabularyData.length) * 100;
+            const readingProgress = (Object.keys(appState.readingAnswers).length / readingQuestions.length) * 100;
+            const grammarProgress = (Object.keys(appState.grammarAnswers).length / comprehensiveTest.length) * 100;
+            return (vocabProgress + readingProgress + grammarProgress) / 3;
+        }
+
+        function createProgressRing(percentage, size = 80) {
+            const radius = (size - 10) / 2;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (percentage / 100) * circumference;
+            
+            return `
+                <svg width="${size}" height="${size}" class="progress-ring">
+                    <circle cx="${size/2}" cy="${size/2}" r="${radius}" 
+                            stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                    <circle cx="${size/2}" cy="${size/2}" r="${radius}" 
+                            class="progress-ring-circle"
+                            stroke="currentColor" stroke-width="8" fill="none"
+                            stroke-dasharray="${circumference}"
+                            stroke-dashoffset="${offset}"
+                            stroke-linecap="round"/>
+                </svg>
+            `;
+        }
+
+        function renderApp() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseFontStack = 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+            const baseSize = config.font_size || defaultConfig.font_size;
+            
+            const app = document.getElementById('app');
+            app.style.backgroundColor = config.background_color || defaultConfig.background_color;
+            app.style.color = config.text_color || defaultConfig.text_color;
+            app.style.fontFamily = `${customFont}, ${baseFontStack}`;
+            app.style.fontSize = `${baseSize}px`;
+            
+            const totalProgress = calculateTotalProgress();
+            const vocabProgress = (appState.completedVocabCards.size / vocabularyData.length) * 100;
+            const readingProgress = (Object.keys(appState.readingAnswers).length / readingQuestions.length) * 100;
+            const grammarProgress = (Object.keys(appState.grammarAnswers).length / comprehensiveTest.length) * 100;
+            
+            app.innerHTML = `
+                <div class="min-h-full flex flex-col" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                    <!-- Header -->
+                    <header class="p-3 sm:p-6 shadow-md" style="background-color: ${config.surface_color || defaultConfig.surface_color};">
+                        <div class="max-w-6xl mx-auto">
+                            <!-- Mobile Layout -->
+                            <div class="block sm:hidden">
+                                <div class="flex justify-between items-center mb-3">
+                                    <a href="https://nckhthptnk.github.io/tienganh11/" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       class="px-3 py-2 rounded-lg font-medium transition-colors text-sm"
+                                       style="background-color: ${config.secondary_action_color || defaultConfig.secondary_action_color}; color: white; font-size: ${baseSize * 0.875}px;">
+                                        ${config.home_button_text || defaultConfig.home_button_text}
+                                    </a>
+                                </div>
+                                <h1 class="font-bold text-center mb-4" style="font-size: ${baseSize * 1.5}px; color: ${config.text_color || defaultConfig.text_color};">
+                                    ${config.unit_title || defaultConfig.unit_title}
+                                </h1>
+                            </div>
+                            
+                            <!-- Desktop Layout -->
+                            <div class="hidden sm:block">
+                                <div class="relative flex items-center mb-4">
+                                    <a href="https://nckhthptnk.github.io/tienganh11/" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       class="px-4 py-2 rounded-lg font-medium transition-colors"
+                                       style="background-color: ${config.secondary_action_color || defaultConfig.secondary_action_color}; color: white; font-size: ${baseSize}px;">
+                                        ${config.home_button_text || defaultConfig.home_button_text}
+                                    </a>
+                                    <h1 class="font-bold absolute left-1/2 transform -translate-x-1/2" style="font-size: ${baseSize * 1.75}px; color: ${config.text_color || defaultConfig.text_color};">
+                                        ${config.unit_title || defaultConfig.unit_title}
+                                    </h1>
+                                </div>
+                            </div>
+                            
+                            <!-- Progress Section -->
+                            <div class="mt-4 sm:mt-6">
+                                <h2 class="font-semibold mb-3 sm:mb-4 text-center sm:text-left" style="font-size: ${baseSize * 1.125}px; color: ${config.text_color || defaultConfig.text_color};">
+                                    📊 Tiến độ học tập
+                                </h2>
+                                
+                                <!-- Mobile: 2x2 Grid -->
+                                <div class="grid grid-cols-2 gap-3 sm:hidden">
+                                    <div class="text-center p-3 rounded-lg" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                        <div class="flex justify-center mb-2" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                            ${createProgressRing(totalProgress, 50)}
+                                        </div>
+                                        <div class="font-bold" style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color};">
+                                            ${Math.round(totalProgress)}%
+                                        </div>
+                                        <div style="font-size: ${baseSize * 0.75}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                            Tổng
+                                        </div>
+                                    </div>
+                                    <div class="text-center p-3 rounded-lg" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                        <div class="flex justify-center mb-2" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                            ${createProgressRing(vocabProgress, 50)}
+                                        </div>
+                                        <div class="font-bold" style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color};">
+                                            ${Math.round(vocabProgress)}%
+                                        </div>
+                                        <div style="font-size: ${baseSize * 0.75}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                            Từ vựng
+                                        </div>
+                                    </div>
+                                    <div class="text-center p-3 rounded-lg" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                        <div class="flex justify-center mb-2" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                            ${createProgressRing(readingProgress, 50)}
+                                        </div>
+                                        <div class="font-bold" style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color};">
+                                            ${Math.round(readingProgress)}%
+                                        </div>
+                                        <div style="font-size: ${baseSize * 0.75}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                            Bài đọc
+                                        </div>
+                                    </div>
+                                    <div class="text-center p-3 rounded-lg" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                        <div class="flex justify-center mb-2" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                            ${createProgressRing(grammarProgress, 50)}
+                                        </div>
+                                        <div class="font-bold" style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color};">
+                                            ${Math.round(grammarProgress)}%
+                                        </div>
+                                        <div style="font-size: ${baseSize * 0.75}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                            Ngữ pháp
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Desktop: 1x4 Grid -->
+                                <div class="hidden sm:grid grid-cols-4 gap-4">
+                                    <div class="text-center p-4 rounded-lg" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                        <div class="flex justify-center mb-2" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                            ${createProgressRing(totalProgress, 70)}
+                                        </div>
+                                        <div class="font-bold" style="font-size: ${baseSize * 1.25}px; color: ${config.text_color || defaultConfig.text_color};">
+                                            ${Math.round(totalProgress)}%
+                                        </div>
+                                        <div style="font-size: ${baseSize * 0.875}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                            Tổng
+                                        </div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-lg" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                        <div class="flex justify-center mb-2" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                            ${createProgressRing(vocabProgress, 70)}
+                                        </div>
+                                        <div class="font-bold" style="font-size: ${baseSize * 1.25}px; color: ${config.text_color || defaultConfig.text_color};">
+                                            ${Math.round(vocabProgress)}%
+                                        </div>
+                                        <div style="font-size: ${baseSize * 0.875}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                            Từ vựng
+                                        </div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-lg" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                        <div class="flex justify-center mb-2" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                            ${createProgressRing(readingProgress, 70)}
+                                        </div>
+                                        <div class="font-bold" style="font-size: ${baseSize * 1.25}px; color: ${config.text_color || defaultConfig.text_color};">
+                                            ${Math.round(readingProgress)}%
+                                        </div>
+                                        <div style="font-size: ${baseSize * 0.875}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                            Bài đọc
+                                        </div>
+                                    </div>
+                                    <div class="text-center p-4 rounded-lg" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                        <div class="flex justify-center mb-2" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                            ${createProgressRing(grammarProgress, 70)}
+                                        </div>
+                                        <div class="font-bold" style="font-size: ${baseSize * 1.25}px; color: ${config.text_color || defaultConfig.text_color};">
+                                            ${Math.round(grammarProgress)}%
+                                        </div>
+                                        <div style="font-size: ${baseSize * 0.875}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                            Ngữ pháp
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Tabs -->
+                            <div class="mt-4 sm:mt-6">
+                                <!-- Mobile: Grid Layout -->
+                                <div class="grid grid-cols-2 gap-2 sm:hidden">
+                                    <button onclick="switchSection('vocabulary')" 
+                                            class="px-3 py-2 rounded-lg font-medium transition-colors text-center ${appState.currentSection === 'vocabulary' ? 'shadow-md' : ''}"
+                                            style="background-color: ${appState.currentSection === 'vocabulary' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize * 0.875}px;">
+                                        📚 Từ vựng
+                                    </button>
+                                    <button onclick="switchSection('reading')" 
+                                            class="px-3 py-2 rounded-lg font-medium transition-colors text-center ${appState.currentSection === 'reading' ? 'shadow-md' : ''}"
+                                            style="background-color: ${appState.currentSection === 'reading' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize * 0.875}px;">
+                                        📖 Bài đọc
+                                    </button>
+                                    <button onclick="switchSection('grammar')" 
+                                            class="px-3 py-2 rounded-lg font-medium transition-colors text-center ${appState.currentSection === 'grammar' ? 'shadow-md' : ''}"
+                                            style="background-color: ${appState.currentSection === 'grammar' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize * 0.875}px;">
+                                        ✏️ Ngữ pháp
+                                    </button>
+                                    <button onclick="switchSection('healthy')" 
+                                            class="px-3 py-2 rounded-lg font-medium transition-colors text-center ${appState.currentSection === 'healthy' ? 'shadow-md' : ''}"
+                                            style="background-color: ${appState.currentSection === 'healthy' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize * 0.875}px;">
+                                        💡 Lối sống
+                                    </button>
+                                </div>
+                                
+                                <!-- Desktop: Horizontal Layout -->
+                                <div class="hidden sm:flex gap-2 overflow-x-auto">
+                                    <button onclick="switchSection('vocabulary')" 
+                                            class="px-6 py-3 rounded-lg font-medium transition-colors whitespace-nowrap ${appState.currentSection === 'vocabulary' ? 'shadow-md' : ''}"
+                                            style="background-color: ${appState.currentSection === 'vocabulary' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize}px;">
+                                        📚 Từ vựng
+                                    </button>
+                                    <button onclick="switchSection('reading')" 
+                                            class="px-6 py-3 rounded-lg font-medium transition-colors whitespace-nowrap ${appState.currentSection === 'reading' ? 'shadow-md' : ''}"
+                                            style="background-color: ${appState.currentSection === 'reading' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize}px;">
+                                        📖 Bài đọc
+                                    </button>
+                                    <button onclick="switchSection('grammar')" 
+                                            class="px-6 py-3 rounded-lg font-medium transition-colors whitespace-nowrap ${appState.currentSection === 'grammar' ? 'shadow-md' : ''}"
+                                            style="background-color: ${appState.currentSection === 'grammar' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize}px;">
+                                        ✏️ Ngữ pháp
+                                    </button>
+                                    <button onclick="switchSection('healthy')" 
+                                            class="px-6 py-3 rounded-lg font-medium transition-colors whitespace-nowrap ${appState.currentSection === 'healthy' ? 'shadow-md' : ''}"
+                                            style="background-color: ${appState.currentSection === 'healthy' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize}px;">
+                                        💡 Healthy Lifestyle
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    
+                    <!-- Main Content -->
+                    <main class="flex-1 p-4 sm:p-6">
+                        <div class="max-w-6xl mx-auto">
+                            <div id="content-area" class="animate-slide-in">
+                                ${renderContent()}
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            `;
+            
+            setupKeyboardListeners();
+        }
+
+        function renderContent() {
+            switch(appState.currentSection) {
+                case 'vocabulary':
+                    return renderVocabulary();
+                case 'reading':
+                    return renderReading();
+                case 'healthy':
+                    return renderHealthyLifestyle();
+                case 'grammar':
+                    return renderGrammar();
+                default:
+                    return '';
+            }
+        }
+
         function renderVocabulary() {
-            const vocabGrid = document.getElementById('vocabGrid');
-            vocabGrid.innerHTML = '';
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
             
-            vocabularyData.forEach(vocab => {
-                const card = document.createElement('div');
-                card.className = 'vocab-card';
-                card.innerHTML = `
-                    <div class="vocab-word">
-                        ${vocab.word}
-                        <button class="pronunciation-btn" onclick="pronounceWord('${vocab.word}')" title="Phát âm">
-                            🔊
+            return `
+                <div class="max-w-4xl mx-auto">
+                    <!-- Sub Navigation -->
+                    <div class="flex gap-2 mb-6 justify-center">
+                        <button onclick="switchVocabSection('flashcards')" 
+                                class="px-6 py-3 rounded-lg font-medium transition-colors ${appState.vocabSubSection === 'flashcards' ? 'shadow-md' : ''}"
+                                style="background-color: ${appState.vocabSubSection === 'flashcards' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize}px;">
+                            📚 Học từ vựng
+                        </button>
+                        <button onclick="switchVocabSection('quiz')" 
+                                class="px-6 py-3 rounded-lg font-medium transition-colors ${appState.vocabSubSection === 'quiz' ? 'shadow-md' : ''}"
+                                style="background-color: ${appState.vocabSubSection === 'quiz' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.secondary_action_color || defaultConfig.secondary_action_color)}; color: white; font-size: ${baseSize}px;">
+                            🧠 Kiểm tra
                         </button>
                     </div>
-                    <div class="vocab-pronunciation">${vocab.pronunciation}</div>
-                    <div class="vocab-meaning">${vocab.meaning}</div>
-                    <div class="vocab-example">"${vocab.example}"</div>
-                `;
-                vocabGrid.appendChild(card);
-            });
+                    
+                    ${appState.vocabSubSection === 'flashcards' ? renderFlashcards() : renderVocabQuiz()}
+                </div>
+            `;
         }
 
-        // Render reading section
+        function renderFlashcards() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            const card = vocabularyData[appState.currentVocabIndex];
+            
+            return `
+                <div class="max-w-2xl mx-auto">
+                    <div class="mb-6 text-center">
+                        <div style="font-size: ${baseSize * 0.875}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                            Thẻ ${appState.currentVocabIndex + 1} / ${vocabularyData.length}
+                        </div>
+                        <div class="w-full rounded-full h-2 mt-2" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                            <div class="h-2 rounded-full transition-all" 
+                                 style="width: ${((appState.currentVocabIndex + 1) / vocabularyData.length) * 100}%; background-color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flashcard ${appState.isFlipped ? 'flipped' : ''}" 
+                         onclick="flipCard()"
+                         style="height: 350px; max-height: 70vh;">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front shadow-xl" 
+                                 style="background-color: ${config.surface_color || defaultConfig.surface_color}; border: 3px solid ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                <div class="text-center px-4">
+                                    <div class="font-bold mb-3 sm:mb-4" 
+                                         style="font-size: ${baseSize * 2}px; color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                        ${card.word}
+                                    </div>
+                                    <div class="mb-2" 
+                                         style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                                        ${card.ipa}
+                                    </div>
+                                    <div class="px-3 py-1 rounded-full inline-block" 
+                                         style="background-color: ${config.background_color || defaultConfig.background_color}; font-size: ${baseSize * 0.75}px; color: ${config.text_color || defaultConfig.text_color};">
+                                        ${card.type}
+                                    </div>
+                                </div>
+                                <div class="mt-6 sm:mt-8 text-center px-2" 
+                                     style="font-size: ${baseSize * 0.75}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.5;">
+                                    <div class="hidden sm:block">Space: Lật thẻ | ←: Lùi | →: Tiếp | Click: Lật thẻ</div>
+                                    <div class="sm:hidden">Chạm để lật thẻ</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flashcard-back shadow-xl" 
+                                 style="background-color: ${config.primary_action_color || defaultConfig.primary_action_color}; color: white;">
+                                <div class="text-center px-4">
+                                    <div class="font-bold mb-3 sm:mb-4" 
+                                         style="font-size: ${baseSize * 1.5}px;">
+                                        ${card.meaning}
+                                    </div>
+                                    <div class="mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg" 
+                                         style="background-color: rgba(255,255,255,0.2); font-size: ${baseSize * 0.875}px;">
+                                        <div class="font-semibold mb-2" style="font-size: ${baseSize}px;">
+                                            Ví dụ:
+                                        </div>
+                                        <div style="font-style: italic; line-height: 1.4;">
+                                            "${card.example}"
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Controls -->
+                    <div class="flex flex-col gap-3 mt-6 sm:hidden">
+                        <button onclick="speakWord('${card.word}')" 
+                                class="w-full py-3 rounded-lg font-medium transition-colors"
+                                style="background-color: ${config.primary_action_color || defaultConfig.primary_action_color}; color: white; font-size: ${baseSize}px;">
+                            🔊 Phát âm
+                        </button>
+                        <div class="flex gap-3">
+                            <button onclick="previousCard()" 
+                                    ${appState.currentVocabIndex === 0 ? 'disabled' : ''}
+                                    class="flex-1 py-3 rounded-lg font-medium transition-colors disabled:opacity-50"
+                                    style="background-color: ${config.secondary_action_color || defaultConfig.secondary_action_color}; color: white; font-size: ${baseSize}px;">
+                                ← Lùi
+                            </button>
+                            <button onclick="nextCard()" 
+                                    ${appState.currentVocabIndex === vocabularyData.length - 1 ? 'disabled' : ''}
+                                    class="flex-1 py-3 rounded-lg font-medium transition-colors disabled:opacity-50"
+                                    style="background-color: ${config.secondary_action_color || defaultConfig.secondary_action_color}; color: white; font-size: ${baseSize}px;">
+                                Tiếp →
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Desktop Controls -->
+                    <div class="hidden sm:flex justify-between items-center mt-6 gap-4">
+                        <button onclick="previousCard()" 
+                                ${appState.currentVocabIndex === 0 ? 'disabled' : ''}
+                                class="px-8 py-3 rounded-lg font-medium transition-colors disabled:opacity-50"
+                                style="background-color: ${config.secondary_action_color || defaultConfig.secondary_action_color}; color: white; font-size: ${baseSize}px;">
+                            ← Lùi
+                        </button>
+                        
+                        <button onclick="speakWord('${card.word}')" 
+                                class="px-6 py-3 rounded-lg font-medium transition-colors"
+                                style="background-color: ${config.primary_action_color || defaultConfig.primary_action_color}; color: white; font-size: ${baseSize}px;">
+                            🔊 Phát âm
+                        </button>
+                        
+                        <button onclick="nextCard()" 
+                                ${appState.currentVocabIndex === vocabularyData.length - 1 ? 'disabled' : ''}
+                                class="px-8 py-3 rounded-lg font-medium transition-colors disabled:opacity-50"
+                                style="background-color: ${config.secondary_action_color || defaultConfig.secondary_action_color}; color: white; font-size: ${baseSize}px;">
+                            Tiếp →
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderVocabQuiz() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            const question = vocabularyQuiz[appState.currentQuizIndex];
+            
+            return `
+                <div class="max-w-2xl mx-auto">
+                    <div class="mb-6 text-center">
+                        <div style="font-size: ${baseSize * 0.875}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                            Câu ${appState.currentQuizIndex + 1} / ${vocabularyQuiz.length}
+                        </div>
+                        <div class="w-full rounded-full h-2 mt-2" style="background-color: ${config.background_color || defaultConfig.background_color};">
+                            <div class="h-2 rounded-full transition-all" 
+                                 style="width: ${((appState.currentQuizIndex + 1) / vocabularyQuiz.length) * 100}%; background-color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 sm:p-8 rounded-xl shadow-lg mb-6" 
+                         style="background-color: ${config.surface_color || defaultConfig.surface_color};">
+                        <div class="font-bold mb-6 text-center" 
+                             style="font-size: ${baseSize * 1.5}px; color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                            ${question.question}
+                        </div>
+                        
+                        <div class="space-y-3">
+                            ${question.options.map((option, optIdx) => {
+                                const isSelected = appState.vocabQuizAnswers[appState.currentQuizIndex] === optIdx;
+                                const isCorrect = optIdx === question.correct;
+                                const showResult = appState.vocabQuizAnswers[appState.currentQuizIndex] !== undefined;
+                                
+                                let bgColor = config.surface_color || defaultConfig.surface_color;
+                                let borderColor = 'transparent';
+                                
+                                if (showResult) {
+                                    if (isCorrect) {
+                                        bgColor = '#10b981';
+                                    } else if (isSelected) {
+                                        bgColor = '#ef4444';
+                                    }
+                                } else if (isSelected) {
+                                    bgColor = config.primary_action_color || defaultConfig.primary_action_color;
+                                    borderColor = config.primary_action_color || defaultConfig.primary_action_color;
+                                } else {
+                                    borderColor = config.background_color || defaultConfig.background_color;
+                                }
+                                
+                                return `
+                                    <button onclick="selectVocabQuizAnswer(${optIdx})"
+                                            ${showResult ? 'disabled' : ''}
+                                            class="w-full text-left p-4 rounded-lg transition-all transform hover:scale-105"
+                                            style="background-color: ${bgColor}; 
+                                                   color: ${showResult || isSelected ? 'white' : (config.text_color || defaultConfig.text_color)}; 
+                                                   font-size: ${baseSize}px; 
+                                                   border: 2px solid ${borderColor};
+                                                   box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                        ${String.fromCharCode(65 + optIdx)}. ${option}
+                                        ${showResult && isCorrect ? ' ✓' : ''}
+                                        ${showResult && isSelected && !isCorrect ? ' ✗' : ''}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+                        
+                        ${appState.vocabQuizAnswers[appState.currentQuizIndex] !== undefined ? `
+                            <div class="mt-6 p-4 rounded-lg text-center" 
+                                 style="background-color: ${appState.vocabQuizAnswers[appState.currentQuizIndex] === question.correct ? '#dcfce7' : '#fef2f2'}; 
+                                        color: ${appState.vocabQuizAnswers[appState.currentQuizIndex] === question.correct ? '#166534' : '#991b1b'}; 
+                                        font-size: ${baseSize}px;">
+                                ${appState.vocabQuizAnswers[appState.currentQuizIndex] === question.correct ? 
+                                    '🎉 Chính xác! Bạn đã trả lời đúng.' : 
+                                    '❌ Sai rồi. Đáp án đúng là: ' + question.options[question.correct]}
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="flex justify-between items-center gap-4">
+                        <button onclick="previousQuiz()" 
+                                ${appState.currentQuizIndex === 0 ? 'disabled' : ''}
+                                class="px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50"
+                                style="background-color: ${config.secondary_action_color || defaultConfig.secondary_action_color}; color: white; font-size: ${baseSize}px;">
+                            ← Câu trước
+                        </button>
+                        
+                        <div class="text-center" style="font-size: ${baseSize * 0.875}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                            Đã trả lời: ${Object.keys(appState.vocabQuizAnswers).length}/${vocabularyQuiz.length}
+                        </div>
+                        
+                        <button onclick="nextQuiz()" 
+                                ${appState.currentQuizIndex === vocabularyQuiz.length - 1 ? 'disabled' : ''}
+                                class="px-6 py-3 rounded-lg font-medium transition-colors disabled:opacity-50"
+                                style="background-color: ${config.secondary_action_color || defaultConfig.secondary_action_color}; color: white; font-size: ${baseSize}px;">
+                            Câu tiếp →
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
         function renderReading() {
-            document.getElementById('readingText').innerHTML = readingText;
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
             
-            const questionsContainer = document.getElementById('readingQuestions');
-            questionsContainer.innerHTML = '<h3>Reading Comprehension Questions:</h3>';
+            return `
+                <div class="max-w-4xl mx-auto">
+                    ${renderReadingText()}
+                </div>
+            `;
+        }
+
+        function renderReadingText() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
             
-            readingQuestions.forEach((q, index) => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question-item';
-                questionDiv.innerHTML = `
-                    <div style="font-weight: bold; margin-bottom: 10px;">Question ${index + 1}: ${q.question}</div>
-                    <div class="quiz-options">
-                        ${q.options.map((option, i) => `
-                            <div class="quiz-option" onclick="selectReadingAnswer(${index}, ${i})">
-                                ${String.fromCharCode(65 + i)}. ${option}
+            return `
+                <div>
+                    <div class="p-6 sm:p-8 rounded-xl shadow-lg mb-6" 
+                         style="background-color: ${config.surface_color || defaultConfig.surface_color};">
+                        <h2 class="font-bold mb-6" 
+                            style="font-size: ${baseSize * 1.5}px; color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                            📖 Bài đọc: Online Learning Technology
+                        </h2>
+                        <div class="leading-relaxed" 
+                             style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color}; line-height: 1.8;">
+                            ${readingText}
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 sm:p-8 rounded-xl shadow-lg" 
+                         style="background-color: ${config.surface_color || defaultConfig.surface_color};">
+                        <h3 class="font-bold mb-6" 
+                            style="font-size: ${baseSize * 1.25}px; color: ${config.text_color || defaultConfig.text_color};">
+                            ❓ Câu hỏi trắc nghiệm
+                        </h3>
+                        ${readingQuestions.map((q, idx) => `
+                            <div class="mb-6 p-4 rounded-lg" 
+                                 style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                <div class="font-semibold mb-3" 
+                                     style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color};">
+                                    ${idx + 1}. ${q.question}
+                                </div>
+                                <div class="space-y-2">
+                                    ${q.options.map((opt, optIdx) => {
+                                        const isSelected = appState.readingAnswers[idx] === optIdx;
+                                        const isCorrect = optIdx === q.correct;
+                                        const showResult = appState.readingAnswers[idx] !== undefined;
+                                        
+                                        let bgColor = config.surface_color || defaultConfig.surface_color;
+                                        if (showResult) {
+                                            if (isCorrect) bgColor = '#10b981';
+                                            else if (isSelected) bgColor = '#ef4444';
+                                        } else if (isSelected) {
+                                            bgColor = config.primary_action_color || defaultConfig.primary_action_color;
+                                        }
+                                        
+                                        return `
+                                            <button onclick="selectReadingAnswer(${idx}, ${optIdx})"
+                                                    ${showResult ? 'disabled' : ''}
+                                                    class="w-full text-left p-3 rounded-lg transition-colors"
+                                                    style="background-color: ${bgColor}; color: ${showResult || isSelected ? 'white' : (config.text_color || defaultConfig.text_color)}; font-size: ${baseSize * 0.875}px; border: 2px solid ${isSelected ? (config.primary_action_color || defaultConfig.primary_action_color) : 'transparent'};">
+                                                ${String.fromCharCode(65 + optIdx)}. ${opt}
+                                                ${showResult && isCorrect ? ' ✓' : ''}
+                                                ${showResult && isSelected && !isCorrect ? ' ✗' : ''}
+                                            </button>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHealthyLifestyle() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            
+            return `
+                <div class="max-w-4xl mx-auto">
+                    ${renderHealthyLifestyleTips()}
+                </div>
+            `;
+        }
+
+        function renderHealthyLifestyleTips() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            
+            const healthyTips = [
+                {
+                    icon: "🥗",
+                    title: "Healthy Eating",
+                    tips: [
+                        "Eat plenty of fruits and vegetables daily",
+                        "Choose whole grains over refined grains",
+                        "Include lean proteins in your meals",
+                        "Limit processed and sugary foods",
+                        "Drink plenty of water throughout the day"
+                    ]
+                },
+                {
+                    icon: "🏃‍♂️",
+                    title: "Regular Exercise",
+                    tips: [
+                        "Aim for at least 30 minutes of exercise daily",
+                        "Include both cardio and strength training",
+                        "Take the stairs instead of elevators",
+                        "Walk or bike for short distances",
+                        "Find activities you enjoy to stay motivated"
+                    ]
+                },
+                {
+                    icon: "😴",
+                    title: "Quality Sleep",
+                    tips: [
+                        "Get 7-9 hours of sleep each night",
+                        "Maintain a consistent sleep schedule",
+                        "Create a relaxing bedtime routine",
+                        "Avoid screens before bedtime",
+                        "Keep your bedroom cool and dark"
+                    ]
+                },
+                {
+                    icon: "🧘‍♀️",
+                    title: "Mental Health",
+                    tips: [
+                        "Practice stress management techniques",
+                        "Meditate or practice mindfulness daily",
+                        "Maintain social connections",
+                        "Take breaks from work and technology",
+                        "Seek help when you need it"
+                    ]
+                },
+                {
+                    icon: "💧",
+                    title: "Hydration",
+                    tips: [
+                        "Drink 8-10 glasses of water daily",
+                        "Start your day with a glass of water",
+                        "Carry a water bottle with you",
+                        "Eat water-rich foods like fruits",
+                        "Limit sugary and caffeinated drinks"
+                    ]
+                },
+                {
+                    icon: "🚭",
+                    title: "Avoid Bad Habits",
+                    tips: [
+                        "Don't smoke or use tobacco products",
+                        "Limit alcohol consumption",
+                        "Avoid excessive screen time",
+                        "Don't skip meals regularly",
+                        "Limit exposure to negative influences"
+                    ]
+                }
+            ];
+            
+            return `
+                <div class="p-6 sm:p-8 rounded-xl shadow-lg" 
+                     style="background-color: ${config.surface_color || defaultConfig.surface_color};">
+                    <h2 class="font-bold mb-8 text-center" 
+                        style="font-size: ${baseSize * 1.75}px; color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                        💡 Essential Tips for a Healthy Lifestyle
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        ${healthyTips.map(category => `
+                            <div class="p-6 rounded-lg border-2 transition-all hover:shadow-lg" 
+                                 style="background-color: ${config.background_color || defaultConfig.background_color}; border-color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                <div class="flex items-center mb-4">
+                                    <span style="font-size: ${baseSize * 2}px;" class="mr-3">${category.icon}</span>
+                                    <h3 class="font-bold" 
+                                        style="font-size: ${baseSize * 1.25}px; color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                                        ${category.title}
+                                    </h3>
+                                </div>
+                                <ul class="space-y-3">
+                                    ${category.tips.map(tip => `
+                                        <li class="flex items-start">
+                                            <span class="mr-3 mt-1" style="color: ${config.primary_action_color || defaultConfig.primary_action_color};">✓</span>
+                                            <span style="font-size: ${baseSize * 0.9}px; color: ${config.text_color || defaultConfig.text_color}; line-height: 1.6;">
+                                                ${tip}
+                                            </span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="mt-8 p-6 rounded-lg text-center" 
+                         style="background-color: ${config.primary_action_color || defaultConfig.primary_action_color}; color: white;">
+                        <h4 class="font-bold mb-3" style="font-size: ${baseSize * 1.25}px;">
+                            🎯 Remember: Small Changes, Big Results!
+                        </h4>
+                        <p style="font-size: ${baseSize}px; line-height: 1.6;">
+                            Start with one or two tips and gradually build healthy habits. 
+                            Consistency is more important than perfection. Your future self will thank you!
+                        </p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGrammar() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            
+            return `
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                        ${Object.entries(grammarTopics).map(([key, topic]) => `
+                            <button onclick="selectGrammarTopic('${key}')"
+                                    class="p-4 rounded-lg font-medium transition-all ${appState.currentGrammarTopic === key ? 'shadow-lg' : 'shadow'}"
+                                    style="background-color: ${appState.currentGrammarTopic === key ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.surface_color || defaultConfig.surface_color)}; color: ${appState.currentGrammarTopic === key ? 'white' : (config.text_color || defaultConfig.text_color)}; font-size: ${baseSize * 0.875}px;">
+                                ${topic.title}
+                            </button>
+                        `).join('')}
+                        <button onclick="selectGrammarTopic('comprehensive')"
+                                class="p-4 rounded-lg font-medium transition-all ${appState.currentGrammarTopic === 'comprehensive' ? 'shadow-lg' : 'shadow'}"
+                                style="background-color: ${appState.currentGrammarTopic === 'comprehensive' ? (config.primary_action_color || defaultConfig.primary_action_color) : (config.surface_color || defaultConfig.surface_color)}; color: ${appState.currentGrammarTopic === 'comprehensive' ? 'white' : (config.text_color || defaultConfig.text_color)}; font-size: ${baseSize * 0.875}px;">
+                            📝 Bài tập tổng hợp
+                        </button>
+                    </div>
+                    
+                    <div id="grammar-content" class="animate-slide-in">
+                        ${renderGrammarContent()}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderGrammarContent() {
+            const config = window.elementSdk?.config || defaultConfig;
+            const baseSize = config.font_size || defaultConfig.font_size;
+            
+            if (!appState.currentGrammarTopic) {
+                return `
+                    <div class="text-center p-12 rounded-xl" 
+                         style="background-color: ${config.surface_color || defaultConfig.surface_color};">
+                        <div style="font-size: ${baseSize * 3}px;">📚</div>
+                        <div class="mt-4" 
+                             style="font-size: ${baseSize * 1.125}px; color: ${config.text_color || defaultConfig.text_color}; opacity: 0.7;">
+                            Chọn một chủ đề ngữ pháp để bắt đầu học
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (appState.currentGrammarTopic === 'comprehensive') {
+                return `
+                    <div class="p-6 sm:p-8 rounded-xl shadow-lg" 
+                         style="background-color: ${config.surface_color || defaultConfig.surface_color};">
+                        <h3 class="font-bold mb-6" 
+                            style="font-size: ${baseSize * 1.5}px; color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                            📝 Bài tập tổng hợp (30 câu)
+                        </h3>
+                        ${comprehensiveTest.map((q, idx) => `
+                            <div class="mb-6 p-4 rounded-lg" 
+                                 style="background-color: ${config.background_color || defaultConfig.background_color};">
+                                <div class="font-semibold mb-3" 
+                                     style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color};">
+                                    ${idx + 1}. ${q.question}
+                                </div>
+                                <div class="space-y-2">
+                                    ${q.options.map((opt, optIdx) => {
+                                        const isSelected = appState.grammarAnswers[idx] === optIdx;
+                                        const isCorrect = optIdx === q.correct;
+                                        const showResult = appState.grammarAnswers[idx] !== undefined;
+                                        
+                                        let bgColor = config.surface_color || defaultConfig.surface_color;
+                                        if (showResult) {
+                                            if (isCorrect) bgColor = '#10b981';
+                                            else if (isSelected) bgColor = '#ef4444';
+                                        } else if (isSelected) {
+                                            bgColor = config.primary_action_color || defaultConfig.primary_action_color;
+                                        }
+                                        
+                                        return `
+                                            <button onclick="selectGrammarAnswer(${idx}, ${optIdx})"
+                                                    ${showResult ? 'disabled' : ''}
+                                                    class="w-full text-left p-3 rounded-lg transition-colors"
+                                                    style="background-color: ${bgColor}; color: ${showResult || isSelected ? 'white' : (config.text_color || defaultConfig.text_color)}; font-size: ${baseSize * 0.875}px; border: 2px solid ${isSelected ? (config.primary_action_color || defaultConfig.primary_action_color) : 'transparent'};">
+                                                ${String.fromCharCode(65 + optIdx)}. ${opt}
+                                                ${showResult && isCorrect ? ' ✓' : ''}
+                                                ${showResult && isSelected && !isCorrect ? ' ✗' : ''}
+                                            </button>
+                                        `;
+                                    }).join('')}
+                                </div>
                             </div>
                         `).join('')}
                     </div>
                 `;
-                questionsContainer.appendChild(questionDiv);
-            });
-        }
-
-        // Select reading answer
-        function selectReadingAnswer(questionIndex, answerIndex) {
-            const questionDiv = document.querySelectorAll('.question-item')[questionIndex];
-            const options = questionDiv.querySelectorAll('.quiz-option');
+            }
             
-            // Remove previous selections
-            options.forEach(option => {
-                option.classList.remove('selected', 'correct', 'incorrect');
-            });
-            
-            // Mark selected answer
-            options[answerIndex].classList.add('selected');
-            
-            // Show correct answer after a delay
-            setTimeout(() => {
-                options[readingQuestions[questionIndex].correct].classList.add('correct');
-                if (answerIndex !== readingQuestions[questionIndex].correct) {
-                    options[answerIndex].classList.add('incorrect');
-                }
-            }, 500);
-        }
-
-        // Initialize flashcards
-        function initializeFlashcards() {
-            updateFlashcard();
-        }
-
-        // Update flashcard display
-        function updateFlashcard() {
-            const vocab = vocabularyData[currentCardIndex];
-            document.getElementById('cardFront').innerHTML = `<div>${vocab.word}</div>`;
-            document.getElementById('cardBack').innerHTML = `
-                <div style="font-size: 1.2rem; margin-bottom: 10px;">${vocab.meaning}</div>
-                <div style="font-size: 1rem; margin-bottom: 10px;">${vocab.pronunciation}</div>
-                <div style="font-size: 0.9rem; font-style: italic;">"${vocab.example}"</div>
+            const topic = grammarTopics[appState.currentGrammarTopic];
+            return `
+                <div class="p-6 sm:p-8 rounded-xl shadow-lg" 
+                     style="background-color: ${config.surface_color || defaultConfig.surface_color};">
+                    <h3 class="font-bold mb-6" 
+                        style="font-size: ${baseSize * 1.5}px; color: ${config.primary_action_color || defaultConfig.primary_action_color};">
+                        ${topic.title}
+                    </h3>
+                    <div class="leading-relaxed whitespace-pre-line" 
+                         style="font-size: ${baseSize}px; color: ${config.text_color || defaultConfig.text_color}; line-height: 1.8;">
+                        ${topic.theory}
+                    </div>
+                </div>
             `;
-            document.getElementById('cardCounter').textContent = `Thẻ ${currentCardIndex + 1} / ${vocabularyData.length}`;
-            
-            // Reset flip state
-            document.getElementById('flashcard').classList.remove('flipped');
-            isCardFlipped = false;
         }
 
-        // Flip flashcard
+        function switchSection(section) {
+            appState.currentSection = section;
+            renderApp();
+        }
+
         function flipCard() {
-            const flashcard = document.getElementById('flashcard');
-            flashcard.classList.toggle('flipped');
-            isCardFlipped = !isCardFlipped;
+            appState.isFlipped = !appState.isFlipped;
+            renderApp();
         }
 
-        // Next flashcard
-        function nextCard() {
-            currentCardIndex = (currentCardIndex + 1) % vocabularyData.length;
-            updateFlashcard();
-        }
-
-        // Previous flashcard
-        function previousCard() {
-            currentCardIndex = currentCardIndex === 0 ? vocabularyData.length - 1 : currentCardIndex - 1;
-            updateFlashcard();
-        }
-
-        // Shuffle flashcards
-        function shuffleCards() {
-            for (let i = vocabularyData.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [vocabularyData[i], vocabularyData[j]] = [vocabularyData[j], vocabularyData[i]];
-            }
-            currentCardIndex = 0;
-            updateFlashcard();
-        }
-
-        // Change quiz mode
-        function changeQuizMode() {
-            currentQuizMode = document.getElementById('quizMode').value;
-            currentQuestionIndex = 0;
-            quizScore = 0;
-            selectedAnswer = null;
-            
-            // Shuffle questions for variety
-            const questions = [...quizData[currentQuizMode]];
-            for (let i = questions.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [questions[i], questions[j]] = [questions[j], questions[i]];
-            }
-            quizData[currentQuizMode] = questions;
-            
-            updateQuizDisplay();
-        }
-
-        // Update quiz display
-        function updateQuizDisplay() {
-            const questions = quizData[currentQuizMode];
-            if (questions.length === 0) return;
-            
-            const currentQuestion = questions[currentQuestionIndex];
-            document.getElementById('quizQuestion').textContent = `Question ${currentQuestionIndex + 1}: ${currentQuestion.question}`;
-            
-            const optionsContainer = document.getElementById('quizOptions');
-            optionsContainer.innerHTML = '';
-            
-            currentQuestion.options.forEach((option, index) => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'quiz-option';
-                optionDiv.textContent = option;
-                optionDiv.onclick = () => selectQuizAnswer(index);
-                optionsContainer.appendChild(optionDiv);
-            });
-            
-            document.getElementById('quizScore').textContent = quizScore;
-            document.getElementById('totalQuestions').textContent = questions.length;
-            
-            selectedAnswer = null;
-        }
-
-        // Select quiz answer
-        function selectQuizAnswer(answerIndex) {
-            if (selectedAnswer !== null) return; // Prevent multiple selections
-            
-            selectedAnswer = answerIndex;
-            const options = document.querySelectorAll('#quizOptions .quiz-option');
-            const currentQuestion = quizData[currentQuizMode][currentQuestionIndex];
-            
-            // Mark selected answer
-            options[answerIndex].classList.add('selected');
-            
-            // Show correct answer after a delay
-            setTimeout(() => {
-                options[currentQuestion.correct].classList.add('correct');
-                if (answerIndex === currentQuestion.correct) {
-                    quizScore++;
-                    document.getElementById('quizScore').textContent = quizScore;
-                } else {
-                    options[answerIndex].classList.add('incorrect');
-                }
-            }, 500);
-        }
-
-        // Next quiz question
-        function nextQuestion() {
-            const questions = quizData[currentQuizMode];
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                updateQuizDisplay();
-            } else {
-                // Quiz completed
-                alert(`Quiz completed! Your score: ${quizScore}/${questions.length}`);
-                currentQuestionIndex = 0;
-                quizScore = 0;
-                updateQuizDisplay();
-            }
-        }
-
-        // Pronounce word function
-        function pronounceWord(word) {
-            // Create a visual feedback
-            const button = event.target;
-            button.style.transform = 'scale(1.2)';
-            button.style.background = 'linear-gradient(45deg, #fdcb6e, #fd79a8)';
-            
-            // Reset button after animation
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-                button.style.background = 'linear-gradient(45deg, #fd79a8, #fdcb6e)';
-            }, 200);
-            
-            // Try to use Speech Synthesis API if available
+        function speakWord(word) {
             if ('speechSynthesis' in window) {
                 const utterance = new SpeechSynthesisUtterance(word);
                 utterance.lang = 'en-US';
                 utterance.rate = 0.8;
                 utterance.pitch = 1;
                 speechSynthesis.speak(utterance);
-            } else {
-                // Fallback: Show pronunciation guide
-                const pronunciationData = vocabularyData.find(v => v.word === word);
-                if (pronunciationData) {
-                    // Create a temporary tooltip
-                    const tooltip = document.createElement('div');
-                    tooltip.style.cssText = `
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: linear-gradient(45deg, #fd79a8, #fdcb6e);
-                        color: white;
-                        padding: 20px;
-                        border-radius: 15px;
-                        font-size: 1.2rem;
-                        font-weight: bold;
-                        z-index: 10000;
-                        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                    `;
-                    tooltip.textContent = `Phát âm: ${pronunciationData.pronunciation}`;
-                    document.body.appendChild(tooltip);
-                    
-                    setTimeout(() => {
-                        document.body.removeChild(tooltip);
-                    }, 2000);
+            }
+        }
+
+        function nextCard() {
+            if (appState.currentVocabIndex < vocabularyData.length - 1) {
+                appState.currentVocabIndex++;
+                appState.isFlipped = false;
+                renderApp();
+                // Safely pronounce the next word after render completes
+                setTimeout(() => {
+                    try {
+                        const currentWord = vocabularyData[appState.currentVocabIndex]?.word;
+                        if (currentWord) {
+                            speakWord(currentWord);
+                        }
+                    } catch (error) {
+                        console.log('Pronunciation error:', error);
+                    }
+                }, 800);
+            }
+        }
+
+        function previousCard() {
+            if (appState.currentVocabIndex > 0) {
+                appState.currentVocabIndex--;
+                appState.isFlipped = false;
+                renderApp();
+                // Safely pronounce the previous word after render completes
+                setTimeout(() => {
+                    try {
+                        const currentWord = vocabularyData[appState.currentVocabIndex]?.word;
+                        if (currentWord) {
+                            speakWord(currentWord);
+                        }
+                    } catch (error) {
+                        console.log('Pronunciation error:', error);
+                    }
+                }, 800);
+            }
+        }
+
+
+
+        async function markAsCompleted() {
+            appState.completedVocabCards.add(appState.currentVocabIndex.toString());
+            await updateProgress();
+            renderApp();
+        }
+
+        async function selectReadingAnswer(questionIdx, optionIdx) {
+            if (appState.readingAnswers[questionIdx] !== undefined) return;
+            
+            appState.readingAnswers[questionIdx] = optionIdx;
+            const isCorrect = optionIdx === readingQuestions[questionIdx].correct;
+            playSound(isCorrect);
+            await updateProgress();
+            renderApp();
+        }
+
+        async function selectGrammarAnswer(questionIdx, optionIdx) {
+            if (appState.grammarAnswers[questionIdx] !== undefined) return;
+            
+            appState.grammarAnswers[questionIdx] = optionIdx;
+            const isCorrect = optionIdx === comprehensiveTest[questionIdx].correct;
+            playSound(isCorrect);
+            await updateProgress();
+            renderApp();
+        }
+
+        function selectGrammarTopic(topic) {
+            appState.currentGrammarTopic = topic;
+            renderApp();
+        }
+
+        function switchVocabSection(section) {
+            appState.vocabSubSection = section;
+            renderApp();
+        }
+
+        function switchReadingSection(section) {
+            appState.readingSubSection = section;
+            renderApp();
+        }
+
+        async function selectVocabQuizAnswer(optionIdx) {
+            if (appState.vocabQuizAnswers[appState.currentQuizIndex] !== undefined) return;
+            
+            appState.vocabQuizAnswers[appState.currentQuizIndex] = optionIdx;
+            const isCorrect = optionIdx === vocabularyQuiz[appState.currentQuizIndex].correct;
+            playSound(isCorrect);
+            await updateProgress();
+            renderApp();
+        }
+
+        function nextQuiz() {
+            if (appState.currentQuizIndex < vocabularyQuiz.length - 1) {
+                appState.currentQuizIndex++;
+                renderApp();
+            }
+        }
+
+        function previousQuiz() {
+            if (appState.currentQuizIndex > 0) {
+                appState.currentQuizIndex--;
+                renderApp();
+            }
+        }
+
+        function setupKeyboardListeners() {
+            // Remove existing listeners to prevent duplicates
+            document.removeEventListener('keydown', handleKeydown);
+            document.addEventListener('keydown', handleKeydown);
+        }
+
+        function handleKeydown(e) {
+            // Only handle keyboard shortcuts when in vocabulary flashcard mode
+            if (appState.currentSection === 'vocabulary' && appState.vocabSubSection === 'flashcards') {
+                // Prevent default behavior for our handled keys
+                if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                
+                // Handle specific keys
+                switch(e.key) {
+                    case ' ':
+                    case 'Spacebar':
+                        flipCard();
+                        break;
+                    case 'ArrowRight':
+                        if (appState.currentVocabIndex < vocabularyData.length - 1) {
+                            nextCard();
+                        }
+                        break;
+                    case 'ArrowLeft':
+                        if (appState.currentVocabIndex > 0) {
+                            previousCard();
+                        }
+                        break;
                 }
             }
         }
 
-        // Initialize the app when page loads
-        window.onload = init;
+        async function onConfigChange(config) {
+            renderApp();
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["unit_title", config.unit_title || defaultConfig.unit_title],
+                    ["home_button_text", config.home_button_text || defaultConfig.home_button_text]
+                ])
+            });
+        }
+
+        initializeApp();
+        
+        // Auto-pronounce first word when page loads
+        setTimeout(() => {
+            try {
+                if (appState.currentSection === 'vocabulary' && appState.vocabSubSection === 'flashcards') {
+                    const firstWord = vocabularyData[0]?.word;
+                    if (firstWord) {
+                        speakWord(firstWord);
+                    }
+                }
+            } catch (error) {
+                console.log('Initial pronunciation error:', error);
+            }
+        }, 2000);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99649f4556def8f0',t:'MTc2MTc2MTM0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9974aeb473b76141',t:'MTc2MTkyOTc1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
