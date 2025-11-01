@@ -1337,18 +1337,6 @@ Online education also provides access to vast amounts of <span class="highlight"
                                 style="background-color: ${config.primary_action_color || defaultConfig.primary_action_color}; color: white; font-size: ${baseSize}px;">
                             🔊 Phát âm
                         </button>
-                        ${!appState.completedVocabCards.has(appState.currentVocabIndex.toString()) ? `
-                            <button onclick="markAsCompleted()" 
-                                    class="w-full py-3 rounded-lg font-medium transition-colors"
-                                    style="background-color: #10b981; color: white; font-size: ${baseSize}px;">
-                                ✓ Đã học xong từ này
-                            </button>
-                        ` : `
-                            <div class="w-full py-3 rounded-lg font-medium text-center"
-                                 style="background-color: #dcfce7; color: #166534; font-size: ${baseSize}px;">
-                                ✅ Đã hoàn thành
-                            </div>
-                        `}
                         <div class="flex gap-3">
                             <button onclick="previousCard()" 
                                     ${appState.currentVocabIndex === 0 ? 'disabled' : ''}
@@ -1374,26 +1362,11 @@ Online education also provides access to vast amounts of <span class="highlight"
                             ← Lùi
                         </button>
                         
-                        <div class="flex gap-3">
-                            <button onclick="speakWord('${card.word}')" 
-                                    class="px-6 py-3 rounded-lg font-medium transition-colors"
-                                    style="background-color: ${config.primary_action_color || defaultConfig.primary_action_color}; color: white; font-size: ${baseSize}px;">
-                                🔊 Phát âm
-                            </button>
-                            
-                            ${!appState.completedVocabCards.has(appState.currentVocabIndex.toString()) ? `
-                                <button onclick="markAsCompleted()" 
-                                        class="px-6 py-3 rounded-lg font-medium transition-colors"
-                                        style="background-color: #10b981; color: white; font-size: ${baseSize}px;">
-                                    ✓ Đã học xong
-                                </button>
-                            ` : `
-                                <div class="px-6 py-3 rounded-lg font-medium"
-                                     style="background-color: #dcfce7; color: #166534; font-size: ${baseSize}px;">
-                                    ✅ Đã hoàn thành
-                                </div>
-                            `}
-                        </div>
+                        <button onclick="speakWord('${card.word}')" 
+                                class="px-6 py-3 rounded-lg font-medium transition-colors"
+                                style="background-color: ${config.primary_action_color || defaultConfig.primary_action_color}; color: white; font-size: ${baseSize}px;">
+                            🔊 Phát âm
+                        </button>
                         
                         <button onclick="nextCard()" 
                                 ${appState.currentVocabIndex === vocabularyData.length - 1 ? 'disabled' : ''}
@@ -1841,10 +1814,6 @@ Online education also provides access to vast amounts of <span class="highlight"
 
         async function nextCard() {
             if (appState.currentVocabIndex < vocabularyData.length - 1) {
-                // Đánh dấu thẻ hiện tại đã hoàn thành
-                appState.completedVocabCards.add(appState.currentVocabIndex.toString());
-                await updateProgress();
-                
                 appState.currentVocabIndex++;
                 appState.isFlipped = false;
                 renderApp();
@@ -2103,5 +2072,5 @@ Online education also provides access to vast amounts of <span class="highlight"
             }
         }, 2000);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997bff0fd77352ea',t:'MTc2MjAwNjQ0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997c09acb301fda3',t:'MTc2MjAwNjg3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
