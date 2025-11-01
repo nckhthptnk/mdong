@@ -886,6 +886,9 @@ Online education also provides access to vast amounts of <span class="highlight"
                     const record = data[0];
                     appState.progressData = record;
                     
+                    if (record.current_vocab_index !== undefined) {
+                        appState.currentVocabIndex = record.current_vocab_index;
+                    }
                     if (record.completed_vocab_cards) {
                         appState.completedVocabCards = new Set(record.completed_vocab_cards.split(',').filter(x => x));
                     }
@@ -1797,8 +1800,13 @@ Online education also provides access to vast amounts of <span class="highlight"
             renderApp();
         }
 
-        function flipCard() {
+        async function flipCard() {
             appState.isFlipped = !appState.isFlipped;
+            
+            // Đánh dấu thẻ hiện tại đã xem khi lật thẻ
+            appState.completedVocabCards.add(appState.currentVocabIndex.toString());
+            await updateProgress();
+            
             renderApp();
         }
 
@@ -1814,8 +1822,16 @@ Online education also provides access to vast amounts of <span class="highlight"
 
         async function nextCard() {
             if (appState.currentVocabIndex < vocabularyData.length - 1) {
+                // Đánh dấu thẻ hiện tại đã xem
+                appState.completedVocabCards.add(appState.currentVocabIndex.toString());
+                
                 appState.currentVocabIndex++;
                 appState.isFlipped = false;
+                
+                // Đánh dấu thẻ mới cũng đã xem
+                appState.completedVocabCards.add(appState.currentVocabIndex.toString());
+                
+                await updateProgress();
                 renderApp();
                 // Safely pronounce the next word after render completes
                 setTimeout(() => {
@@ -1833,8 +1849,16 @@ Online education also provides access to vast amounts of <span class="highlight"
 
         async function previousCard() {
             if (appState.currentVocabIndex > 0) {
+                // Đánh dấu thẻ hiện tại đã xem
+                appState.completedVocabCards.add(appState.currentVocabIndex.toString());
+                
                 appState.currentVocabIndex--;
                 appState.isFlipped = false;
+                
+                // Đánh dấu thẻ mới cũng đã xem
+                appState.completedVocabCards.add(appState.currentVocabIndex.toString());
+                
+                await updateProgress();
                 renderApp();
                 // Safely pronounce the previous word after render completes
                 setTimeout(() => {
@@ -2058,10 +2082,14 @@ Online education also provides access to vast amounts of <span class="highlight"
             initializeApp();
         }
         
-        // Auto-pronounce first word when page loads
+        // Auto-pronounce first word when page loads and mark first card as viewed
         setTimeout(() => {
             try {
                 if (appState.currentSection === 'vocabulary' && appState.vocabSubSection === 'flashcards') {
+                    // Đánh dấu thẻ đầu tiên đã xem
+                    appState.completedVocabCards.add('0');
+                    updateProgress();
+                    
                     const firstWord = vocabularyData[0]?.word;
                     if (firstWord) {
                         speakWord(firstWord);
@@ -2072,5 +2100,5 @@ Online education also provides access to vast amounts of <span class="highlight"
             }
         }, 2000);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997c0ff162295ff0',t:'MTc2MjAwNzEzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997c1ba482f18936',t:'MTc2MjAwNzYxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
